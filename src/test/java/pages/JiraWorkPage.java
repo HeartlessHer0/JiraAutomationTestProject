@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 public class JiraWorkPage extends BasePage {
 
+    private String jiraWorkPageURL = "https://tms-aqa18.atlassian.net/jira/your-work";
+
     private By allProjectsButtonLocator = By.xpath("//*[contains (text(), 'Все проекты')]");
     private String mainProjectButtonLocator = "//*[contains (text(), 'Replace')]";
     private By summaryFieldLocator = By.xpath("//div/input[@id='summary-field']");
@@ -22,6 +24,10 @@ public class JiraWorkPage extends BasePage {
     @Override
     protected By getPageIdentifier() {
         return allProjectsButtonLocator;
+    }
+
+    public String getJiraWorkPageURL() {
+        return jiraWorkPageURL;
     }
 
     public WebElement getAllProjectsButton() {

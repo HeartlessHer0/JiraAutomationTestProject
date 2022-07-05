@@ -11,6 +11,7 @@ import services.BrowsersService;
 
 public class LoginPage extends BasePage {
 
+    private String loginPageURL = "https://id.atlassian.com/login";
     //Блок описания селекторов для элементов
     private By emailInputLocator = By.id("username");
     private By pswInputLocator = By.id("password");
@@ -29,6 +30,12 @@ public class LoginPage extends BasePage {
     }
 
     //Блок атомарных методов
+
+
+    public String getLoginPageURL() {
+        return loginPageURL;
+    }
+
     public WebElement getEmailInput() {
         return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
     }

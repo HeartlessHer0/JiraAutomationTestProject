@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 public class JiraAllProjectsPage extends BasePage {
 
+    private String jiraAllProjectsPageURL = "https://tms-aqa18.atlassian.net/jira/projects";
+
     private By projectPageIdentifierLocator = By.xpath("//h1[contains (text(), 'Проекты')]");
     private String projectButtonLocator = "//*[@aria-label='Сведения о проектах']//*[contains(text(), 'Replace')]";
     private String projectActionsButton = "//tr//*[contains (text(), 'Replace')]//ancestor::tr//*[@aria-label='Еще']";
@@ -28,8 +30,9 @@ public class JiraAllProjectsPage extends BasePage {
         return projectPageIdentifierLocator;
     }
 
-    // public WebElement getIssueActionsButton(String path){return waitsService.waitForPresenceOfElement(By.xpath(issueActionsButtonLocator.replace("Replace",path)));}
-
+    public String getJiraAllProjectsPageURL() {
+        return jiraAllProjectsPageURL;
+    }
 
     public WebElement getProjectButton(String projectName) {
         return waitsService.waitForPresenceOfElement(By.xpath(projectButtonLocator.replace("Replace", projectName)));

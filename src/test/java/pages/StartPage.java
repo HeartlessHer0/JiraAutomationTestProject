@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 public class StartPage extends BasePage {
 
+    private String startPageURL = "https://start.atlassian.com";
+
     //Блок описания селекторов для элементов
     private By profileButtonLocator = By.xpath("//*[@data-testid='nav__profile-menu-trigger']/span/span/div");
     private By jiraSoftwareButtonLocator = By.xpath("//*[contains (text(), 'Jira Software')]");
@@ -29,6 +31,12 @@ public class StartPage extends BasePage {
     }
 
     //Блок атомарных методов
+
+
+    public String getStartPageURL() {
+        return startPageURL;
+    }
+
     public WebElement getProfileButton() {
         return waitsService.waitForVisibilityLocatedBy(profileButtonLocator);
     }
