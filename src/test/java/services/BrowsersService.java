@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class BrowsersService {
 
-    //todo
+    //todo обновить-удалить данные
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
 

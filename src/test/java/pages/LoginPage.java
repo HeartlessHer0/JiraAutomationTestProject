@@ -5,8 +5,6 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
-import services.BrowsersService;
 
 
 public class LoginPage extends BasePage {
@@ -55,17 +53,5 @@ public class LoginPage extends BasePage {
     public WebElement getIncorrectPasswordOrEmailElement() {
         return waitsService.waitForVisibilityLocatedBy(passwordIsNullTextLocator);
     }
-
-    @Test
-    public void unitLoginTest() throws InterruptedException {
-        WebDriver driver = new BrowsersService().getDriver();
-        driver.get("https://id.atlassian.com/login");
-        getEmailInput().sendKeys("jedai38@gmail.com");
-        getSubmitButton().click();
-        getPswInput().sendKeys("MyPass4RegTrello2022");
-        Thread.sleep(4000);
-        driver.quit();
-    }
-
 
 }
