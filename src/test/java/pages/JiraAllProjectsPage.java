@@ -20,6 +20,18 @@ public class JiraAllProjectsPage extends BasePage {
     private By closeMoveToTrashButtonLocator = By.xpath("data-test-id='project-soft-delete-modal.ui.modal-footer.close-button-wrapper'");
     private By successMoveToTrashNotificationLocator = By.xpath("//*[@data-test-id='project-soft-delete-modal.ui.flags.moved-to-trash-success']");
     private By closeNotificationButton = By.xpath("//*[@data-testid='project-soft-delete-modal.ui.flags.moved-to-trash-success-dismiss']");
+    //Locators for create Board
+    private By addBoardButton = By.xpath("//*[@data-test-id='global-pages.directories.projects-directory-v2.create-projects-button.button.button']");
+    private String boardTypeBoardButton = "//button[@aria-label='Replace']"; // Replace = {'Kanban' , 'Scrum', 'Отслеживание багов'}
+    private By usePatternButton = By.xpath("//*[contains(text(),'Использовать шаблон')]");
+    private By teamManagedButton = By.xpath("//*[@data-testid='project-template-select-v2.ui.layout.screens.project-types.footer.select-project-button-team-managed']");
+    private By boardNameField = By.xpath("//*[@id='project-create.create-form.name-field.input']");
+    private By boardKeyField = By.xpath("//*[@id='project-create.create-form.advanced-dropdown.key-field.input']");
+    private By createBoardWithParametersButton = By.xpath("//*[@data-test-id='project-create.create-form.create-screen.submit-button']");
+    private By titleTooShortMessage = By.xpath("//*[contains(text(),'Слишком короткое название')]");
+    private By titleTooLongMessage = By.xpath("//*[contains(text(),'Слишком длинное название')]");
+    private By needTitleMessage = By.xpath("//div[contains(text(),'Проект должен иметь имя')]");
+    private By needKeyMessage = By.xpath("//div[contains(text(),'Проект должен иметь ключ')]");
 
     public JiraAllProjectsPage(WebDriver driver) {
         super(driver);
@@ -72,5 +84,49 @@ public class JiraAllProjectsPage extends BasePage {
 
     public WebElement getCloseNotificationButton() {
         return waitsService.waitForVisibilityLocatedBy(closeNotificationButton);
+    }
+    //Getters for creating Board
+    public WebElement getAddBoardButton() {
+        return waitsService.waitForVisibilityLocatedBy(addBoardButton);
+    }
+
+    public WebElement getBoardTypeBoardButton(String boardType) {
+        return waitsService.waitForVisibilityLocatedBy(By.xpath(boardTypeBoardButton.replace("Replace", boardType)));
+    }
+
+    public WebElement getUsePatternButton() {
+        return waitsService.waitForVisibilityLocatedBy(usePatternButton);
+    }
+
+    public WebElement getTeamManagedButton() {
+        return waitsService.waitForVisibilityLocatedBy(teamManagedButton);
+    }
+
+    public WebElement getBoardNameField() {
+        return waitsService.waitForVisibilityLocatedBy(boardNameField);
+    }
+
+    public WebElement getBoardKeyField() {
+        return waitsService.waitForVisibilityLocatedBy(boardKeyField);
+    }
+
+    public WebElement getCreateBoardWithParametersButton() {
+        return waitsService.waitForClickableElement(createBoardWithParametersButton);
+    }
+
+    public WebElement getTitleTooShortMessage() {
+        return waitsService.waitForVisibilityLocatedBy(titleTooShortMessage);
+    }
+
+    public WebElement getTitleTooLongMessage() {
+        return waitsService.waitForVisibilityLocatedBy(titleTooLongMessage);
+    }
+
+    public WebElement getNeedTitleMessage() {
+        return waitsService.waitForVisibilityLocatedBy(needTitleMessage);
+    }
+
+    public WebElement getNeedKeyMessage() {
+        return waitsService.waitForVisibilityLocatedBy(needKeyMessage);
     }
 }
