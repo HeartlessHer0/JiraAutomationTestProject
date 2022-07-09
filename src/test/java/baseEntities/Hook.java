@@ -32,6 +32,14 @@ public class Hook extends BaseCucumberTest {
     @Before
     public void initializeTest(Scenario scenario) {
         baseCucumberTest.driver = new BrowsersService().getDriver();
+        baseCucumberTest.jiraAllProjectsPage = new JiraAllProjectsPage(driver);
+        baseCucumberTest.jiraSoftwareNavigationPage = new JiraSoftwareNavigationPage(driver);
+        baseCucumberTest.jiraWorkPage = new JiraWorkPage(driver);
+        baseCucumberTest.startPage = new StartPage(driver);
+        baseCucumberTest.boardPage = new BoardPage(driver);
+        baseCucumberTest.logoutPage = new LogoutPage(driver);
+        baseCucumberTest.loginPage = new LoginPage(driver);
+        baseCucumberTest.projectSettingPage = new ProjectSettingPage(driver);
 
 
 

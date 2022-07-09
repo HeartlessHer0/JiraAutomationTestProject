@@ -12,7 +12,7 @@ public class BaseCucumberTest {
     public static Board baseBoard;
 
     public static LoginPage loginPage;
-    public static StartPage startPage;
+    public static StartPage startPage ;
     public static JiraAllProjectsPage jiraAllProjectsPage;
     public static JiraSoftwareNavigationPage jiraSoftwareNavigationPage;
     public static JiraWorkPage jiraWorkPage;

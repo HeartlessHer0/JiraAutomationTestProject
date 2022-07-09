@@ -10,15 +10,6 @@ public class SmokeUIDefs extends BaseCucumberTest {
 
     private  String boardName = "SmokeUI11";
     private  String boardKey = "SM11";
-    JiraAllProjectsPage jiraAllProjectsPage = new JiraAllProjectsPage(driver);
-    JiraSoftwareNavigationPage jiraSoftwareNavigationPage = new JiraSoftwareNavigationPage(driver);
-    JiraWorkPage jiraWorkPage = new JiraWorkPage(driver);
-    StartPage startPage = new StartPage(driver);
-    BoardPage boardPage = new BoardPage(driver);
-    LogoutPage logoutPage = new LogoutPage(driver);
-    LoginPage loginPage = new LoginPage(driver);
-    ProjectSettingPage projectSettingPage = new ProjectSettingPage(driver);
-
 
     @When("User go to the Jira Software page and create a new board  with some parameters")
     public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {
