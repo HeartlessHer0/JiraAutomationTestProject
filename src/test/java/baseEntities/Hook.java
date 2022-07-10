@@ -1,5 +1,6 @@
 package baseEntities;
 
+import baseEntities.BaseCucumberTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
