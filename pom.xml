@@ -4,135 +4,202 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>net.atlassian.tms-aqa18</groupId>
     <artifactId>JiraAutomationTestProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <cucumber.related.versions>7.2.3</cucumber.related.versions>
+        <allure.related.versions>2.18.1</allure.related.versions>
+
+        <testng.version>7.5</testng.version>
+        <selenium-java.version>4.1.4</selenium-java.version>
+        <webdrivermanager.version>5.1.1</webdrivermanager.version>
+        <rest-assured.version>4.5.1</rest-assured.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <gson.version>2.9.0</gson.version>
+        <json-compare.version>3.0</json-compare.version>
+        <junit.version>4.13.2</junit.version>
+        <lombok.version>1.18.24</lombok.version>
+        <slf4j-simple.version>1.7.36</slf4j-simple.version>
+        <log4j-core.version>2.18.0</log4j-core.version>
+        <postgresql.version>42.4.0</postgresql.version>
+        <selenide.version>6.6.6</selenide.version>
+
+        <project.scope>test</project.scope>
+
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <aspectj.version>1.8.10</aspectj.version>
+        <maven-surefire-plugin.build.version>2.22.2</maven-surefire-plugin.build.version>
+        <aspectj.build.version>1.9.6</aspectj.build.version>
+        <maven-compiler-plugin.build.version>3.10.1</maven-compiler-plugin.build.version>
+        <allure-maven.build.version>2.10.0</allure-maven.build.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.1.4</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>4.5.0</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.36</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.17.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.17.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>2.17.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
+            <version>${webdrivermanager.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.2.2</version>
+            <version>${cucumber.related.versions}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.2.2</version>
+            <version>${cucumber.related.versions}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.2.2</version>
+            <version>${cucumber.related.versions}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
-            <version>2.2</version>
-            <scope>test</scope>
+            <version>${hamcrest.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+
+        <!-- todo delete it if we won't use JSONComparator ->>>>>> -->
         <dependency>
             <groupId>com.github.fslev</groupId>
             <artifactId>json-compare</artifactId>
-            <version>3.0</version>
+            <version>${json-compare.version}</version>
+            <scope>${project.scope}</scope>
         </dependency>
+        <!-- todo <<<<<<- delete it if we won't use JSONComparator -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+
+        <!-- todo choose one logger of these ->>>>>> -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <!-- todo <<<<<<- choose one logger of these -->
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.related.versions}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber4-jvm</artifactId>
+            <version>${allure.related.versions}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+
+        <!-- todo change/delete it after choosing the right DB ->>>>>> -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <!-- todo <<<<<<- change/delete it after choosing the right DB -->
+
+        <!-- todo delete it if we won't use Selenide ->>>>>> -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>${allure.related.versions}</version>
+            <scope>${project.scope}</scope>
+        </dependency>
+        <!-- todo <<<<<<- delete it if we won't use Selenide -->
+
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>${maven-surefire-plugin.build.version}</version>
                 <configuration>
-                    <!--testFailureIgnore>true</testFailureIgnore>
-                    <forkCount>2</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <useSystemClassLoader>false</useSystemClassLoader-->
-                    <!--suiteXmlFiles>src/test/resources/testng.xml</suiteXmlFiles-->
+
+                    <!-- todo change/delete it if it won`t be usual ->>>>>>
+					<suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    todo <<<<<<- change/delete it if it won`t be usual -->
+
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                        -Dcucumber.options="--plugin io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.build.version}/aspectjweaver-${aspectj.build.version}.jar"
+                        -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
                     </argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
+                        <version>${aspectj.build.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>${maven-compiler-plugin.build.version}</version>
                 <configuration>
                     <source>11</source>
                     <target>11</target>
@@ -142,7 +209,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.build.version}</version>
             </plugin>
         </plugins>
     </build>
