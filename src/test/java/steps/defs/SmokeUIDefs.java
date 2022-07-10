@@ -8,8 +8,8 @@ import pages.*;
 
 public class SmokeUIDefs extends BaseCucumberTest {
 
-    private  String boardName = "SmokeUI11";
-    private  String boardKey = "SM11";
+    private  String boardName = "SmokeUI";
+    private  String boardKey = "SM";
 
     @When("User go to the Jira Software page and create a new board  with some parameters")
     public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {

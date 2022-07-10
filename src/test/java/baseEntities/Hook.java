@@ -12,22 +12,10 @@ import services.BrowsersService;
 
 public class Hook extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
-    private StartPage startPage;
-    private JiraAllProjectsPage jiraAllProjectsPage;
-    private JiraSoftwareNavigationPage jiraSoftwareNavigationPage;
-    private JiraWorkPage jiraWorkPage;
-    private BoardPage boardPage;
-    private LogoutPage logoutPage;
-    private LoginPage loginPage;
-    private ProjectSettingPage projectSettingPage;
-
 
     public Hook(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
-
-
     }
-
 
     @Before
     public void initializeTest(Scenario scenario) {
@@ -40,9 +28,8 @@ public class Hook extends BaseCucumberTest {
         baseCucumberTest.logoutPage = new LogoutPage(driver);
         baseCucumberTest.loginPage = new LoginPage(driver);
         baseCucumberTest.projectSettingPage = new ProjectSettingPage(driver);
-
-
-
+        baseCucumberTest.trashPage = new TrashPage(driver);
+        baseCucumberTest.profileSettingsPage = new ProfileSettingsPage(driver);
     }
 
     @After

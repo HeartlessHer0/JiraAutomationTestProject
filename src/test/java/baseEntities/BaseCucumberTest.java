@@ -19,5 +19,7 @@ public class BaseCucumberTest {
     public static BoardPage boardPage;
     public static LogoutPage logoutPage;
     public static ProjectSettingPage projectSettingPage;
+    public static TrashPage trashPage;
+    public static ProfileSettingsPage profileSettingsPage;
 
 }
