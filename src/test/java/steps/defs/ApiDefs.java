@@ -1,33 +1,31 @@
 package steps.defs;
 
 import baseEntities.BaseCucumberTest;
-import com.google.gson.Gson;
 import configuration.Endpoints;
 import configuration.ReadProperties;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
+import io.restassured.mapper.ObjectMapperType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
-import models.Board;
-import models.ListOfBoards;
-import models.BoardLocation;
+import models.Project;
 import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ApiDefs extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
     private ValidatableResponse validatableResponse;
-    private Board expectedBoard = new Board();
 
-    Gson gson = new Gson();
+    private Project actualProject;
+    private Project[] arrayOfActualProjects;
 
     public ApiDefs(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
@@ -47,105 +45,163 @@ public class ApiDefs extends BaseCucumberTest {
                 .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
     }
 
-    /**
+    /*
      *
      */
 
-    @When("I want to get all boards")
-    public void iWantToGetAllBoards() {
+    @When("I want to create a project according my testing standards")
+    public void iWantToCreateAProjectAccordingMyTestingStandards() {
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 999999 + 1);
+        baseProject = new Project.Builder()
+                .key("TEST" + randomNum)
+                .name("[AUTO TEST] Name of test project " + randomNum)
+                .description("[AUTO TEST] Description of test project")
+                .projectTypeKey("software")
+                .leadAccountId("70121:77540319-5931-4c40-a571-3bebf0eff56e")//todo make unhardcoded
+                .build();
+
         validatableResponse = baseCucumberTest.restAssured.given()
+                .body(baseProject, ObjectMapperType.GSON)
                 .when()
-                .get(Endpoints.GET_ALL_BOARDS)
+                .post(Endpoints.CREATE_PROJECT)
                 .then();
     }
 
-    @When("I want to create a board according my testing standards")
-    public void iWantToCreateABoardAccordingMyTestingStandards() {
-        //todo self-made builder for it
-        expectedBoard.setName("[AUTO TEST] Board name");
-        expectedBoard.setType("kanban");
-        expectedBoard.setFilterId(10000);
-
+    @When("I want to get the previously created project")
+    public void iWantToGetThePreviouslyCreatedProject() {
         validatableResponse = baseCucumberTest.restAssured.given()
-                .body(gson.toJson(expectedBoard))
+                .pathParam("projectIdOrKey", baseProject.getKey())
                 .when()
-                .post(Endpoints.CREATE_BOARD)
+                .get(Endpoints.GET_PROJECT)
                 .then();
     }
 
-    @When("I want to get the board")
-    public void iWantToGetTheBoard() {
+    @When("I want to get all projects")
+    public void iWantToGetAllProjects() {
         validatableResponse = baseCucumberTest.restAssured.given()
-                .pathParam("boardId", baseBoard.getId())
-                .log().params()//todo del
                 .when()
-                .get(Endpoints.GET_BOARD)
+                .get(Endpoints.GET_ALL_PROJECTS)
                 .then();
     }
 
-    @When("I want to delete the board")
-    public void iWantToDeleteTheBoard() {
+
+    @When("I want to update the previously created project")
+    public void iWantToUpdateThePreviouslyCreatedProject() {
+        String previousBaseProjectKey = baseProject.getKey();
+
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 999999 + 1);
+        baseProject = new Project.Builder()
+                .key("TEST" + randomNum)
+                .name("[AUTO TEST] Name of updated test project " + randomNum)
+                .description("[AUTO TEST] Description of updated test project")
+                .projectTypeKey("software")
+                .leadAccountId("70121:77540319-5931-4c40-a571-3bebf0eff56e")//todo make unhardcoded
+                .build();
+
         validatableResponse = baseCucumberTest.restAssured.given()
-                .pathParam("boardId", baseBoard.getId())
-                .log().params()//todo del
+                .pathParam("projectIdOrKey", previousBaseProjectKey)
+                .body(baseProject, ObjectMapperType.GSON)
                 .when()
-                .delete(Endpoints.DELETE_BOARD)
+                .put(Endpoints.UPDATE_PROJECT)
                 .then();
     }
 
-    /**
+
+    @When("I want to get all statuses for the previously created project")
+    public void iWantToGetAllStatusesForThePreviouslyCreatedProject() {
+        validatableResponse = baseCucumberTest.restAssured.given()
+                .pathParam("projectIdOrKey", baseProject.getKey())
+                .when()
+                .get(Endpoints.GET_ALL_STATUSES_FOR_PROJECT)
+                .then();
+    }
+
+
+    @When("I want to delete the previously created project")
+    public void iWantToDeleteThePreviouslyCreatedProject() {
+        validatableResponse = baseCucumberTest.restAssured.given()
+                .pathParam("projectIdOrKey", baseProject.getKey())
+                .when()
+                .delete(Endpoints.DELETE_PROJECT)
+                .then();
+    }
+
+    /*
      *
      */
 
-    @Then("I should get the correct response about all requested boards")
-    public void iShouldGetTheCorrectResponseAboutAllRequestedBoards() {
-        ListOfBoards response = validatableResponse
-                .assertThat()
-                .log().status().log().body()//todo del
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(ListOfBoards.class);
-
-        Assert.assertEquals(response.getMaxResults(), response.MAX_RESULTS);
-        Assert.assertEquals(response.getStartAt(), response.START_AT);
-
-        if (response.getTotal() >= response.MAX_RESULTS) {
-            Assert.assertEquals(response.getValues().length, response.MAX_RESULTS);
-        } else {
-            Assert.assertEquals(response.getValues().length, response.getTotal());
-        }
-    }
-
-    @Then("I should get the correct response about the created board")
-    public void iShouldGetTheCorrectResponseAboutTheCreatedBoard() {
-        baseBoard = validatableResponse
-                .assertThat()
-                .log().status().log().body()//todo del
-                .statusCode(HttpStatus.SC_CREATED)
-                .extract().as(Board.class);
-
-        Assert.assertEquals(baseBoard, expectedBoard);
-
-        Matcher matcher = Pattern.compile("\\d+$").matcher(baseBoard.getSelf());
-        matcher.find();
-        Assert.assertEquals(Long.parseLong(matcher.group()), baseBoard.getId());
-    }
-
-    @Then("I should get the correct response about the requested board")
-    public void iShouldGetTheCorrectResponseAboutTheRequestedBoard() {
-        Board actualBoard = validatableResponse
-                .assertThat()
-                .log().status().log().body()//todo del
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(Board.class);
-
-        Assert.assertEquals(actualBoard, baseBoard);
-    }
-
-    @Then("I should get the correct response about the deleted board")
-    public void iShouldGetTheCorrectResponseAboutTheDeletedBoard() {
+    @Then("I should get the correct response about the created project")
+    public void iShouldGetTheCorrectResponseAboutTheCreatedProject() {
         validatableResponse
-                .assertThat()
                 .log().status().log().body()//todo del
+                .assertThat()
+                .statusCode(HttpStatus.SC_CREATED)
+                .body("key", equalTo(baseProject.getKey()));
+    }
+
+    @Then("I will be able to remember ID and SELF fields from the response")
+    public void iWillBeAbleToRememberIDAndSELFFieldsFromTheResponse() {
+        JsonPath jsonPath = validatableResponse.extract().jsonPath();
+
+        baseProject.setSelf(jsonPath.getString("self"));
+        baseProject.setId(jsonPath.getLong("id"));
+    }
+
+    @Then("I should get the correct response about the requested project")
+    public void iShouldGetTheCorrectResponseAboutTheRequestedProject() {
+        actualProject = validatableResponse
+                .log().status().log().body()//todo del
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(Project.class);
+
+        Assert.assertEquals(actualProject, baseProject);
+        Assert.assertEquals(actualProject.getDescription(), baseProject.getDescription());
+        Assert.assertEquals(
+                validatableResponse.extract().jsonPath().getString("lead.accountId"),
+                baseProject.getLeadAccountId()
+        );
+    }
+
+    @Then("I should get the correct response about all projects")
+    public void iShouldGetTheCorrectResponseAboutAllProjects() {
+        arrayOfActualProjects = validatableResponse
+                .log().status().log().body()//todo del
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(Project[].class);
+    }
+
+    @Then("my previously created project should be among them")
+    public void myPreviouslyCreatedProjectShouldBeAmongThem() {
+        Assert.assertEquals(arrayOfActualProjects[0], baseProject);
+
+//        boolean flagOfPresence = false;todo wtf flaky test?
+//        for (Project project : arrayOfActualProjects) {
+//            try {
+//                Assert.assertEquals(project, baseProject);
+//                flagOfPresence = true;
+//                break;
+//            } catch (AssertionError assertionError) {
+//                System.out.println("Trying once again...");//todo rename it
+//            }
+//        }
+//        Assert.assertTrue(flagOfPresence);
+    }
+
+    @Then("I should get the correct response about all statuses for the requested project")
+    public void iShouldGetTheCorrectResponseAboutAllStatusesForTheRequestedProject() {
+        validatableResponse
+                .log().status().log().body()//todo del
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+    }
+
+    @Then("I should get the correct response about the deleted project")
+    public void iShouldGetTheCorrectResponseAboutTheDeletedProject() {
+        validatableResponse
+                .log().status().log().body()//todo del
+                .assertThat()
                 .statusCode(HttpStatus.SC_NO_CONTENT);
     }
 }
