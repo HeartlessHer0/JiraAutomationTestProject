@@ -73,32 +73,32 @@ public class Project {
             newProject = new Project();
         }
 
-        public Builder key(String key) {
+        public Project.Builder key(String key) {
             newProject.key = key;
             return this;
         }
 
-        public Builder name(String name) {
+        public Project.Builder name(String name) {
             newProject.name = name;
             return this;
         }
 
-        public Builder description(String description) {
+        public Project.Builder description(String description) {
             newProject.description = description;
             return this;
         }
 
-        public Builder leadAccountId(String leadAccountId) {
+        public Project.Builder leadAccountId(String leadAccountId) {
             newProject.leadAccountId = leadAccountId;
             return this;
         }
 
-        public Builder url(String url) {
+        public Project.Builder url(String url) {
             newProject.url = url;
             return this;
         }
 
-        public Builder projectTypeKey(String projectTypeKey) {
+        public Project.Builder projectTypeKey(String projectTypeKey) {
             newProject.projectTypeKey = projectTypeKey;
             return this;
         }

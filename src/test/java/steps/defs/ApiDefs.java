@@ -1,7 +1,5 @@
 package steps.defs;
 
-ipackage steps.defs;
-
 
 import baseEntities.BaseCucumberTest;
 
@@ -16,8 +14,6 @@ import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
-
-import models.Project;
 
 import models.Board;
 import models.ListOfBoards;

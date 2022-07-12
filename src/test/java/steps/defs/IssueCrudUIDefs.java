@@ -33,9 +33,7 @@ public class IssueCrudUIDefs extends BaseCucumberTest {
 
     @When("User open created Issue")
     public void userOpenCreatedIssue() {
-
         boardPage.getOpenIssueButtonLocator(issueName).click();
-
     }
 
     @Then("User see Window with created Issue")
@@ -53,7 +51,6 @@ public class IssueCrudUIDefs extends BaseCucumberTest {
                 .sendKeys(Keys.ENTER)
                 .build()
                 .perform();
-
     }
 
     @Then("User see Window with updated Issue")
@@ -71,7 +68,6 @@ public class IssueCrudUIDefs extends BaseCucumberTest {
         boardPage.getIssueActionsButton(updName).click();
         boardPage.getActionDeleteIssueButton().click();
         boardPage.getConfirmDeleteIssueButton().click();
-
     }
 
     @Then("User see clean board")

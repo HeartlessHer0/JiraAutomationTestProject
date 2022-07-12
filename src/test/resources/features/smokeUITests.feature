@@ -1,3 +1,4 @@
+@UI
 Feature: UI Smoke Test
 
   Background:
