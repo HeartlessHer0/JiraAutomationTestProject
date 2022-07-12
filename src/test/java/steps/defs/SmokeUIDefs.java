@@ -4,13 +4,15 @@ import baseEntities.BaseCucumberTest;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import pages.*;
 
 public class SmokeUIDefs extends BaseCucumberTest {
-    private String boardName = "SmokeUI";
-    private String boardKey = "SM";
+
+    private  String boardName = "SmokeUI";
+    private  String boardKey = "SM";
 
     @When("User go to the Jira Software page and create a new board  with some parameters")
-    public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters() {
+    public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {
         startPage.getJiraSoftwareButton().click();
         jiraAllProjectsPage.getAddBoardButton().click();
         jiraAllProjectsPage.getBoardTypeBoardButton("Kanban").click();

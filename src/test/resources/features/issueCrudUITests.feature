@@ -22,4 +22,3 @@ Feature: Issue CRUD
   Scenario: User delete created Issue from the Test Board
     When User delete created and updated Issue
     Then User see clean board
-

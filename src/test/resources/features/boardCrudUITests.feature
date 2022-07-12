@@ -22,6 +22,3 @@ Feature: Board CRUD
     When User delete the created Board from the Projects page
     And User delete the Board from the Trash page
     Then User see delete notification
-
-
-

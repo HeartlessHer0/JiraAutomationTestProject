@@ -5,10 +5,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import pages.*;
 
 public class LoginUIDefs extends BaseCucumberTest {
     BaseCucumberTest baseCucumberTest;
-
+    
     @Given("Atlassian login page is open")
     public void atlassianLoginPageIsOpen() {
         baseCucumberTest.driver.get("https://id.atlassian.com/login");
