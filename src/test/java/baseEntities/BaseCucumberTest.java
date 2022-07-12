@@ -22,4 +22,6 @@ public class BaseCucumberTest {
     public static TrashPage trashPage;
     public static ProfileSettingsPage profileSettingsPage;
 
+
+
 }

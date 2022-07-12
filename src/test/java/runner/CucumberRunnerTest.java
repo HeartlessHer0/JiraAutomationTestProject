@@ -6,8 +6,14 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"defs"})
+        glue = {"steps.defs","baseEntities"})
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
+    @Override
+    @DataProvider
+    public Object[][] scenarios(){
+        return super.scenarios();
+    }
+
 
 
 }
