@@ -1,6 +1,12 @@
 package steps.defs;
 
+ipackage steps.defs;
+
+
 import baseEntities.BaseCucumberTest;
+
+import com.google.gson.Gson;
+
 import configuration.Endpoints;
 import configuration.ReadProperties;
 import io.cucumber.java.en.Given;
@@ -10,7 +16,12 @@ import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
+
 import models.Project;
+
+import models.Board;
+import models.ListOfBoards;
+
 import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
