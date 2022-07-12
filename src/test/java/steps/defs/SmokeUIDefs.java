@@ -1,10 +1,8 @@
 package steps.defs;
 
-import baseEntities.BaseCucumberTest;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.*;
 
 public class SmokeUIDefs extends BaseCucumberTest {
 
