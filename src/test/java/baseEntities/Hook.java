@@ -1,8 +1,9 @@
 package baseEntities;
 
-import baseEntities.BaseCucumberTest;
-import io.cucumber.java.*;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
+import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -16,11 +17,7 @@ public class Hook extends BaseCucumberTest {
         this.baseCucumberTest = baseCucumberTest;
     }
 
-    @BeforeAll
-    public static void beforeAll(){
-        System.out.println("BEFORE ALL");
-    }
-    @Before
+    @Before(value = "@UI")
     public void initializeTest(Scenario scenario) {
         baseCucumberTest.driver = new BrowsersService().getDriver();
         baseCucumberTest.jiraAllProjectsPage = new JiraAllProjectsPage(driver);
@@ -35,10 +32,10 @@ public class Hook extends BaseCucumberTest {
         baseCucumberTest.profileSettingsPage = new ProfileSettingsPage(driver);
     }
 
-    @After
+    @After(value = "@UI")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
-            Allure.getLifecycle().addAttachment(
+            Allure.getLifecycle().addAttachment(                        //Screenshot for all Test
                     "screenshot", "image/png", "png"
                     , ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
 
@@ -48,10 +45,6 @@ public class Hook extends BaseCucumberTest {
         if (baseCucumberTest.driver != null) {
             baseCucumberTest.driver.quit();
         }
-    }
-    @AfterAll
-    public static void afterAll(){
-        System.out.println("AFTER ALL");
     }
 }
 

@@ -1,15 +1,12 @@
 package baseEntities;
 
 import io.restassured.RestAssured;
-import models.Board;
+import models.Project;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 
 public class BaseCucumberTest {
     public static WebDriver driver;
-    public static RestAssured restAssured;
-
-    public static Board baseBoard;
 
     public static LoginPage loginPage;
     public static StartPage startPage ;
@@ -22,6 +19,7 @@ public class BaseCucumberTest {
     public static TrashPage trashPage;
     public static ProfileSettingsPage profileSettingsPage;
 
+    public static RestAssured restAssured;
 
-
+    public static Project baseProject;
 }

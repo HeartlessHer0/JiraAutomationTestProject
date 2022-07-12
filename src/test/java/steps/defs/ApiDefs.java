@@ -1,6 +1,5 @@
 package steps.defs;
 
-import baseEntities.BaseCucumberTest;
 import com.google.gson.Gson;
 import configuration.Endpoints;
 import configuration.ReadProperties;
@@ -11,7 +10,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import models.Board;
 import models.ListOfBoards;
-import models.BoardLocation;
 import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
