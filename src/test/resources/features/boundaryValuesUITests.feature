@@ -1,3 +1,4 @@
+@UI
 Feature: Boundary Testing
   Background:
     Given Atlassian login page is open
@@ -32,3 +33,4 @@ Feature: Boundary Testing
   Scenario: User wants to create a Board without symbols in the Board Name field
       When User dont enter symbols in Board Name Field
       Then User see Board Need Name message
+      

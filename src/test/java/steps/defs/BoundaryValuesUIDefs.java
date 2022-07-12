@@ -15,7 +15,6 @@ public class BoundaryValuesUIDefs extends BaseCucumberTest {
 //    LoginPage loginPage = new LoginPage(driver);
 //    ProjectSettingPage projectSettingPage = new ProjectSettingPage(driver);
 
-
     @And("User open Board creating page")
     public void userOpenBoardCreatingPage() {
         startPage.getJiraSoftwareButton().click();
@@ -24,9 +23,9 @@ public class BoundaryValuesUIDefs extends BaseCucumberTest {
         jiraAllProjectsPage.getUsePatternButton().click();
         jiraAllProjectsPage.getTeamManagedButton().click();
     }
+
     @When("User enter in Board Name Field One symbol")
     public void userEnterInBoardNameFieldOneSymbol() {
-
         jiraAllProjectsPage.getBoardNameField().sendKeys("1");
     }
 
@@ -46,7 +45,6 @@ public class BoundaryValuesUIDefs extends BaseCucumberTest {
         jiraAllProjectsPage.getBoardNameField().sendKeys("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
         jiraAllProjectsPage.getBoardKeyField().click();
     }
-
 
     @Then("User see generated Board Key")
     public void userSeeGeneratedBoardKey() {
@@ -83,6 +81,5 @@ public class BoundaryValuesUIDefs extends BaseCucumberTest {
     public void userEnterInBoardNameFieldSeventyNineSymbols() {
         jiraAllProjectsPage.getBoardNameField().sendKeys("1234567890123456789012345678901234567890123456789012345678901234567890123456789");
         jiraAllProjectsPage.getBoardKeyField().click();
-
     }
 }

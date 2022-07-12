@@ -7,12 +7,10 @@ import org.testng.Assert;
 
 public class LoginUIDefs extends BaseCucumberTest {
     BaseCucumberTest baseCucumberTest;
-
-
+    
     @Given("Atlassian login page is open")
     public void atlassianLoginPageIsOpen() {
         baseCucumberTest.driver.get("https://id.atlassian.com/login");
-
     }
 
     @When("User enter correct email and password")
@@ -22,7 +20,6 @@ public class LoginUIDefs extends BaseCucumberTest {
         loginPage.getPswInput().sendKeys("MyPass4RegTrello2022");
         loginPage.getSubmitButton().click();
     }
-
 
     @Then("User come to the Atlassian Start Page")
     public void userComeToTheAtlassianStartPage() {
@@ -64,7 +61,6 @@ public class LoginUIDefs extends BaseCucumberTest {
     @Then("User see Registration button")
     public void userSeeRegistrationButton() {
         Assert.assertTrue(loginPage.getSignupSubmitButton().isDisplayed());
-
     }
 
     @When("User dont enter email")

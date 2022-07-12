@@ -22,6 +22,7 @@ public class BoardCrudUITests extends BaseCucumberTest {
         jiraAllProjectsPage.getCreateBoardWithParametersButton().click();
         boardPage.getCurrentBoardButton().isDisplayed();
     }
+
     @When("User open the created Board from the Projects page")
     public void userOpenTheCreatedBoardFromTheProjectsPage() {
         startPage.getJiraSoftwareButton().click();
@@ -43,7 +44,6 @@ public class BoardCrudUITests extends BaseCucumberTest {
         projectSettingPage.getSaveChangesButton().click();
         projectSettingPage.getBackToProjectButton().click();
         boardPage.getCurrentBoardButton().click();
-
     }
 
     @Then("User see updated Board with entered parameters")
@@ -71,5 +71,4 @@ public class BoardCrudUITests extends BaseCucumberTest {
         trashPage.getDeleteFromTrashButton().click();
         trashPage.getConfirmDeleteButton().click();
     }
-
 }

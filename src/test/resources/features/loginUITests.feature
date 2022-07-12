@@ -1,3 +1,4 @@
+@UI
 Feature: Login
 
   Background:

@@ -1,3 +1,4 @@
+@UI
 Feature: Navigation
 
   Background:
@@ -23,3 +24,4 @@ Feature: Navigation
   Scenario: User open Project Setting Page from Jira All Projects Page
       When User click Project Settings Button
       Then User see Project Settings Page
+      

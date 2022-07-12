@@ -11,8 +11,6 @@ public class SmokeUIDefs extends BaseCucumberTest {
 
     @When("User go to the Jira Software page and create a new board  with some parameters")
     public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {
-
-
         startPage.getJiraSoftwareButton().click();
         jiraAllProjectsPage.getAddBoardButton().click();
         jiraAllProjectsPage.getBoardTypeBoardButton("Kanban").click();
@@ -22,7 +20,6 @@ public class SmokeUIDefs extends BaseCucumberTest {
         jiraAllProjectsPage.getBoardKeyField().sendKeys(boardKey);
         jiraAllProjectsPage.getCreateBoardWithParametersButton().click();
         boardPage.getCurrentBoardButton().isDisplayed();
-
     }
 
     @Then("User see created Board with entered parameters")
