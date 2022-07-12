@@ -16,6 +16,8 @@ public class LoginPage extends BasePage {
     private By logInSubmitButtonLocator = By.id("login-submit");
     private By passwordIsNullTextLocator = By.id("password-error");
     private By incorrectEmailOrPasswordTextLocator = By.id("login-error");
+    private By signupSubmitButtonLocator = By.id("signup-submit");
+    private By emailIsNullLocator = By.xpath("//div//*[contains(text(), 'Введите адрес электронной почты')]");
 
     //Блок инициализации
     public LoginPage(WebDriver driver) {
@@ -51,7 +53,14 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getIncorrectPasswordOrEmailElement() {
-        return waitsService.waitForVisibilityLocatedBy(passwordIsNullTextLocator);
+        return waitsService.waitForVisibilityLocatedBy(incorrectEmailOrPasswordTextLocator);
     }
 
+    public WebElement getSignupSubmitButton(){
+        return waitsService.waitForVisibilityLocatedBy(signupSubmitButtonLocator);
+    }
+
+    public WebElement getEmailIsNull() {
+        return waitsService.waitForVisibilityLocatedBy(emailIsNullLocator);
+    }
 }

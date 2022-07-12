@@ -15,6 +15,7 @@ public class ProjectSettingPage extends BasePage {
     private By saveChangesButton = By.xpath("//button[@type='submit']");
     private By droplistTriggerLocator = By.xpath("//*[@aria-label='Еще']");
     private By changesNotificationLocator = By.xpath("//*[@role='alert']");
+    private By backToProjectButton = By.xpath("//*[contains(text(), 'Вернуться к проекту')]");
 
 
 
@@ -55,5 +56,9 @@ public class ProjectSettingPage extends BasePage {
 
     public WebElement getChangesNotificationLocator() {
         return waitsService.waitForVisibilityLocatedBy(changesNotificationLocator);
+    }
+
+    public WebElement getBackToProjectButton() {
+        return waitsService.waitForVisibilityLocatedBy(backToProjectButton);
     }
 }
