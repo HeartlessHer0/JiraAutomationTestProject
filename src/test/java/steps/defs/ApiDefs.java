@@ -15,9 +15,8 @@ import io.restassured.mapper.ObjectMapperType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
 
-import models.Board;
-import models.ListOfBoards;
 
+import models.Project;
 import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
 import org.testng.Assert;

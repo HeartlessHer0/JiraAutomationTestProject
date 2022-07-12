@@ -7,7 +7,7 @@ Feature: Board CRUD
 
   Scenario: User create a new Board
     When User go to the Jira Software page and create a new board for CRUD test
-    Then User see created Board with entered parameters
+    Then User see the created Board on Board page
 
   Scenario: User open the created Board
     When User open the created Board from the Projects page
