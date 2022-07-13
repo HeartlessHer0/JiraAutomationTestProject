@@ -1,5 +1,6 @@
 package pages;
 
+import baseEntities.BaseCucumberTest;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,8 +30,14 @@ public class BoardPage extends BasePage {
     private By issueOptionsButtonLocator = By.xpath("//*[@role='presentation']//span[contains(text(),'Настроить')]");
     private By issueCommentFieldLocator = By.xpath("//*[@placeholder='Добавить комментарий...']");
     private By commentOrDescriptionSaveButtonLocator = By.xpath("//*[@data-testid='comment-save-button']");
+    private By activatedCommentFieldLocator = By.xpath("//*[@aria-label='Main content area']");
     private String commentLocator = "//*[@data-renderer-start-pos and contains(text(), 'Replace')]"; //Replace = comment
     private By closeIssueButton = By.xpath("//*[@aria-label='Закрыть']");
+    private By fileUploadingLocator = By.xpath("//*[@type='file']");
+    private By imageLocator = By.xpath("//*[@data-testid='media-image']");
+    private By imageActionsLocator =  By.xpath("//*[@aria-label='more']");
+    private By imageDeleteButton = By.xpath("//*[contains(text(), 'Удалить')]");
+    private By confirmDeleteImageButton = By.xpath("//*[@data-testid='common.components.confirmation-modal.confirm-button']");
 
 
 
@@ -90,7 +97,7 @@ public class BoardPage extends BasePage {
     }
 
     public WebElement getOpenIssueButtonLocator(String issueName) {
-        return waitsService.waitForVisibilityLocatedBy(By.xpath(openIssueButtonLocator.replace("Replace", issueName)));
+        return waitsService.waitForPresenceOfElement(By.xpath(openIssueButtonLocator.replace("Replace", issueName)));
     }
 
     public WebElement getIssueOptionsButtonLocator() {
@@ -127,6 +134,38 @@ public class BoardPage extends BasePage {
 
     public WebElement getColumnHeaderLocator(String columnName) {
         return waitsService.waitForVisibilityLocatedBy(By.xpath(columnHeaderLocator.replace("Replace", columnName)));
+    }
+
+    public WebElement getFileUploadingLocator() {
+        return waitsService.waitForPresenceOfElement(fileUploadingLocator);
+    }
+
+    public WebElement getImageLocator() {
+        return waitsService.waitForVisibilityLocatedBy(imageLocator);
+    }
+    public By getImageInvisLocator() {
+        return imageLocator;
+    }
+
+    public WebElement getImageActionsLocator() {
+        return waitsService.waitForPresenceOfElement(imageActionsLocator);
+    }
+
+    public WebElement getImageDeleteButton() {
+        return waitsService.waitForVisibilityLocatedBy(imageDeleteButton);
+    }
+
+    public WebElement getConfirmDeleteImageButton() {
+        return waitsService.waitForVisibilityLocatedBy(confirmDeleteImageButton);
+    }
+
+    public String getCommentInvLocator(String comment) {
+        commentLocator = "//*[@data-renderer-start-pos and contains(text(), '"+comment+"')]";
+        return commentLocator;
+    }
+
+    public WebElement getActivatedCommentFieldLocator() {
+        return waitsService.waitForVisibilityLocatedBy(activatedCommentFieldLocator);
     }
 }
 
