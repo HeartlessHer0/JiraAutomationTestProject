@@ -1,17 +1,23 @@
 package steps.defs;
 
 import baseEntities.BaseCucumberTest;
+import configuration.ReadProperties;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import services.WaitsService;
+
+import java.time.Duration;
 
 public class IssueCrudUIDefs extends BaseCucumberTest {
     String testBoard = "TestBoard1";
     String issueName = "CRUD_Issue";
     String updName = "CRUD_Update";
+    WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
 
     @And("User open the Test Board")
     public void userOpenTheTestBoard() {
@@ -73,6 +79,6 @@ public class IssueCrudUIDefs extends BaseCucumberTest {
 
     @Then("User see clean board")
     public void userCleanBoard() {
-        Assert.assertEquals(boardPage.getColumnHeaderLocator("К выполнению").getText(), "К ВЫПОЛНЕНИЮ");
+        Assert.assertTrue(waitsService.waitForInvisibilityElement(By.xpath(boardPage.getOpenIssueButtonInvLocator(issueName))));
     }
 }

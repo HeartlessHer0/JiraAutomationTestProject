@@ -167,5 +167,9 @@ public class BoardPage extends BasePage {
     public WebElement getActivatedCommentFieldLocator() {
         return waitsService.waitForVisibilityLocatedBy(activatedCommentFieldLocator);
     }
+    public String getOpenIssueButtonInvLocator(String issueName) {
+        openIssueButtonLocator = "//*[@data-test-id='platform-card.ui.card.focus-container']//span[contains(text(),'"+issueName+"')]";
+        return openIssueButtonLocator;
+    }
 }
 
