@@ -7,14 +7,6 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 public class BoundaryValuesUIDefs extends BaseCucumberTest {
-//    JiraAllProjectsPage jiraAllProjectsPage = new JiraAllProjectsPage(driver);
-//    JiraSoftwareNavigationPage jiraSoftwareNavigationPage = new JiraSoftwareNavigationPage(driver);
-//    JiraWorkPage jiraWorkPage = new JiraWorkPage(driver);
-//    StartPage startPage = new StartPage(driver);
-//    BoardPage boardPage = new BoardPage(driver);
-//    LogoutPage logoutPage = new LogoutPage(driver);
-//    LoginPage loginPage = new LoginPage(driver);
-//    ProjectSettingPage projectSettingPage = new ProjectSettingPage(driver);
 
     @And("User open Board creating page")
     public void userOpenBoardCreatingPage() {

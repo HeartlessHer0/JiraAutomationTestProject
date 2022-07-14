@@ -17,7 +17,7 @@ public class BoardPage extends BasePage {
     private String createIssueButtonLocator = "//h2/div[contains(text(), 'Replace')]//ancestor::div[@data-test-id='platform-board-kit.ui.column.draggable-column.styled-wrapper']//button[@data-testid='platform-inline-card-create.ui.trigger.visible.button']"; // вместо Replace вписать группу в которой создать задачу (Сделать, В работе, Проверка, Готово)
     private By searchFieldLocator = By.xpath("//*[@aria-label='Поиск по доске']");
     private By cleanSearchFieldButtonLocator = By.xpath("//*[@aria-label='Очистить']");
-    private By projectSettingButton = By.xpath("//*[@data-testid='navigation-apps-sidebar-common.ui.shortcuts.shortcuts-add-link']/following-sibling::a");
+    private By projectSettingButton = By.xpath("//*[@data-testid='navigation-apps-sidebar-common.ui.shortcuts.shortcuts-add-link']/following-sibling::a/span");
     private By closeOrOpenNavigationPanelButton = By.xpath("//*[@data-testid='ContextualNavigation-resize-button']");
     private By createColumnButtonLocator = By.xpath("//*[@aria-label='Создать столбец']");
     private String columnHeaderLocator = "//*[@data-test-id='platform-board-kit.common.ui.column-header.editable-title.column-title.column-title' and @aria-label='Replace']";
@@ -82,7 +82,7 @@ public class BoardPage extends BasePage {
     }
 
     public WebElement getProjectSettingButton() {
-        return waitsService.waitForVisibilityLocatedBy(projectSettingButton);
+        return waitsService.waitForPresenceOfElement(projectSettingButton);
     }
     public WebElement getCloseOrOpenNavigationPanelButton() {
         return waitsService.waitForPresenceOfElement(closeOrOpenNavigationPanelButton);

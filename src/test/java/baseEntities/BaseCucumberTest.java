@@ -7,6 +7,10 @@ import pages.*;
 import services.DataBaseService;
 import tables.ProjectsTable;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseCucumberTest {
     public static WebDriver driver;
 
@@ -27,12 +31,10 @@ public class BaseCucumberTest {
 
     public static ProjectsTable projectsTable;
     public static DataBaseService dataBaseService;
+    public static ResultSet rs;
 
-    public static String smokeUIboardName;
-    public static String smokeUIboardKey;
-    public static String crudUIboardName;
-    public static String crudUIBoardKey;
-    public static String crudUIboardNameUPD;
-    public static String crudUIBoardKeyUPD;
+    public static ArrayList<String> boardNames;
+    public static ArrayList<String> boardKeys;
+
 
 }

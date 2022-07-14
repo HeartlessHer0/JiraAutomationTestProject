@@ -7,9 +7,6 @@ import org.testng.Assert;
 
 public class SmokeUIDefs extends BaseCucumberTest {
 
-    private  String boardName = "SmokeUI";
-    private  String boardKey = "SM";
-
     @When("User go to the Jira Software page and create a new board  with some parameters")
     public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {
         startPage.getJiraSoftwareButton().click();
@@ -17,15 +14,15 @@ public class SmokeUIDefs extends BaseCucumberTest {
         jiraAllProjectsPage.getBoardTypeBoardButton("Kanban").click();
         jiraAllProjectsPage.getUsePatternButton().click();
         jiraAllProjectsPage.getTeamManagedButton().click();
-        jiraAllProjectsPage.getBoardNameField().sendKeys(boardName);
-        jiraAllProjectsPage.getBoardKeyField().sendKeys(boardKey);
+        jiraAllProjectsPage.getBoardNameField().sendKeys(boardNames.get(0));
+        jiraAllProjectsPage.getBoardKeyField().sendKeys(boardKeys.get(0));
         jiraAllProjectsPage.getCreateBoardWithParametersButton().click();
         boardPage.getCurrentBoardButton().isDisplayed();
     }
 
     @Then("User see created Board with entered parameters")
     public void userSeeCreatedBoardWithEnteredParameters() {
-        Assert.assertEquals(boardPage.getCurrentBoardButton().getText(), boardName);
+        Assert.assertEquals(boardPage.getCurrentBoardButton().getText(), boardNames.get(0));
     }
 
     @When("User logout from account")

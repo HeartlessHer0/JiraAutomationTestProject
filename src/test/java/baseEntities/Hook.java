@@ -3,6 +3,7 @@ package baseEntities;
 import io.cucumber.java.*;
 
 import io.qameta.allure.Allure;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import pages.*;
@@ -11,6 +12,10 @@ import services.BrowsersService;
 import services.DataBaseService;
 import tables.ProjectsTable;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
 public class Hook extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
 
@@ -18,16 +23,32 @@ public class Hook extends BaseCucumberTest {
         this.baseCucumberTest = baseCucumberTest;
     }
 
+
     @BeforeAll
     public static void beforeAllInitialize(){
         dataBaseService = new DataBaseService();
         projectsTable = new ProjectsTable(dataBaseService);
-        smokeUIboardName = projectsTable.getProjectParameterById("projectName",1).toString();
-        smokeUIboardKey = projectsTable.getProjectParameterById("projectKey",1).toString();
-        crudUIboardName = projectsTable.getProjectParameterById("projectName",2).toString();
-        crudUIBoardKey = projectsTable.getProjectParameterById("projectKey",2).toString();
-        crudUIboardNameUPD = projectsTable.getProjectParameterById("projectName",6).toString();
-        crudUIBoardKeyUPD = projectsTable.getProjectParameterById("projectKey",6).toString();
+        boardNames = new ArrayList<String>();
+        boardKeys = new ArrayList<String>();
+        try {
+            rs = projectsTable.getProjects();
+            while (rs.next()){
+                boardNames.add(rs.getString(2));
+                boardKeys.add(rs.getString(3));
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+//        smokeUIboardName = projectsTable.getProjectParameterById("projectName",1).toString();
+//        smokeUIboardKey = projectsTable.getProjectParameterById("projectKey",1).toString();
+//        crudUIboardName = projectsTable.getProjectParameterById("projectName",2).toString();
+//        crudUIBoardKey = projectsTable.getProjectParameterById("projectKey",2).toString();
+//        crudUIboardNameUPD = projectsTable.getProjectParameterById("projectName",6).toString();
+//        crudUIBoardKeyUPD = projectsTable.getProjectParameterById("projectKey",6).toString();
     }
 
     @Before(value = "@UI")
