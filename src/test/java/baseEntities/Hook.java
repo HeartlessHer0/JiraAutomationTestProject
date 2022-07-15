@@ -4,6 +4,8 @@ import io.cucumber.java.*;
 
 import io.qameta.allure.Allure;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import pages.*;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 
 public class Hook extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
+    private static final Logger logger = LogManager.getLogger(Hook.class);
 
     public Hook(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
@@ -28,6 +31,7 @@ public class Hook extends BaseCucumberTest {
     public static void beforeAllInitialize(){
         dataBaseService = new DataBaseService();
         projectsTable = new ProjectsTable(dataBaseService);
+        logger.info("Data Base connection open");
         boardNames = new ArrayList<String>();
         boardKeys = new ArrayList<String>();
         try {
@@ -41,19 +45,13 @@ public class Hook extends BaseCucumberTest {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-//        smokeUIboardName = projectsTable.getProjectParameterById("projectName",1).toString();
-//        smokeUIboardKey = projectsTable.getProjectParameterById("projectKey",1).toString();
-//        crudUIboardName = projectsTable.getProjectParameterById("projectName",2).toString();
-//        crudUIBoardKey = projectsTable.getProjectParameterById("projectKey",2).toString();
-//        crudUIboardNameUPD = projectsTable.getProjectParameterById("projectName",6).toString();
-//        crudUIBoardKeyUPD = projectsTable.getProjectParameterById("projectKey",6).toString();
+        logger.info("Data Base values import to Test Framework");
     }
 
     @Before(value = "@UI")
     public void initializeTest(Scenario scenario) {
         baseCucumberTest.driver = new BrowsersService().getDriver();
+        logger.info("WebDriver is initialized");
         baseCucumberTest.jiraAllProjectsPage = new JiraAllProjectsPage(driver);
         baseCucumberTest.jiraSoftwareNavigationPage = new JiraSoftwareNavigationPage(driver);
         baseCucumberTest.jiraWorkPage = new JiraWorkPage(driver);
@@ -64,25 +62,30 @@ public class Hook extends BaseCucumberTest {
         baseCucumberTest.projectSettingPage = new ProjectSettingPage(driver);
         baseCucumberTest.trashPage = new TrashPage(driver);
         baseCucumberTest.profileSettingsPage = new ProfileSettingsPage(driver);
+        logger.info("Pages is initialized");
     }
 
     @After(value = "@UI")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
+            logger.info("Scenario failed");
             Allure.getLifecycle().addAttachment(
                     "screenshot", "image/png", "png"
                     , ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+            logger.info("Screenshot taken");
 
             baseCucumberTest.driver.quit();
         }
 
         if (baseCucumberTest.driver != null) {
+            logger.info("Scenario passed");
             baseCucumberTest.driver.quit();
         }
     }
 
     @AfterAll
     public static void afterAll(){
+        logger.info("All tests is passed");
         dataBaseService.closeConnection();
 
     }
