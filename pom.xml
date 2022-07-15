@@ -176,7 +176,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.build.version}</version>
                 <configuration>
-
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
                     <!-- todo change/delete it if it won`t be usual ->>>>>>
 					<suiteXmlFiles>
                         <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
