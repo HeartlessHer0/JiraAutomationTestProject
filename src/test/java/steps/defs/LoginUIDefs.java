@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 public class LoginUIDefs extends BaseCucumberTest {
-    public  BaseCucumberTest baseCucumberTest;
+    public BaseCucumberTest baseCucumberTest;
     private static final Logger logger = LogManager.getLogger(LoginUIDefs.class);
 
 

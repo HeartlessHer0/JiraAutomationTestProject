@@ -16,13 +16,13 @@ import services.WaitsService;
 import java.time.Duration;
 
 public class AttachmentUIDefs extends BaseCucumberTest {
-   private WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
-   private String testComment = "Test Comment";
+    private WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
+    private String testComment = "Test Comment";
     private static final Logger logger = LogManager.getLogger(AttachmentUIDefs.class);
 
     @When("User add Test Image to Issue")
     public void userAddTestImageToIssue() throws InterruptedException {
-        String path= AttachmentUIDefs.class.getClassLoader().getResource("testimage.jpg").getPath().replaceFirst("/", "");
+        String path = AttachmentUIDefs.class.getClassLoader().getResource("testimage.jpg").getPath().replaceFirst("/", "");
 
         boardPage.getOpenIssueButtonLocator("ImageAndCommentTest").click();
         boardPage.getFileUploadingLocator().sendKeys(path);
@@ -62,7 +62,7 @@ public class AttachmentUIDefs extends BaseCucumberTest {
 
     @Then("User see Issue without Test Image")
     public void userSeeIssueWithoutTestImage() {
-       Assert.assertTrue(waitsService.waitForInvisibilityElement(boardPage.getImageInvisLocator()));
+        Assert.assertTrue(waitsService.waitForInvisibilityElement(boardPage.getImageInvisLocator()));
         logger.info("Test Image is not on the Issue");
     }
 

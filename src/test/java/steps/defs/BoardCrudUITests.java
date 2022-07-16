@@ -38,7 +38,7 @@ public class BoardCrudUITests extends BaseCucumberTest {
 
     @Then("User see the created Board on Board page")
     public void userSeeTheCreatedBoardOnBoardPage() {
-        Assert.assertEquals(boardPage.getCurrentBoardButton().getText(),boardNames.get(1));
+        Assert.assertEquals(boardPage.getCurrentBoardButton().getText(), boardNames.get(1));
         logger.info("CRUD Board parameters is checked");
     }
 
@@ -80,7 +80,7 @@ public class BoardCrudUITests extends BaseCucumberTest {
     }
 
     @And("User delete the Board from the Trash page")
-    public void userDeleteTheBoardFromTheTrashPage(){
+    public void userDeleteTheBoardFromTheTrashPage() {
         jiraAllProjectsPage.getGoToTrashPageButton().click();
         logger.info("Trash Page is Opened");
         trashPage.getBoardActionsButton(boardNames.get(5)).click();

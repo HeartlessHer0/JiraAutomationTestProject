@@ -11,7 +11,7 @@ Feature: Issue CRUD API tests
     Given a test project for the following tests has been created
     When I send a request to create an issue according my testing standards
     Then I get a correct response about the created issue
-    * I remember issue ID and SELF fields from the response
+    * I remember issue ID, KEY and SELF fields from the response
 
   Scenario: Getting the previously created issue
     When I send a request to get the previously created issue

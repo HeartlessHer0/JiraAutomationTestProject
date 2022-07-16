@@ -17,36 +17,33 @@ import tables.ProjectsTable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class Hook extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
-    private static final Logger logger = LogManager.getLogger(Hook.class);
 
     public Hook(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
     }
 
+    private static final Logger logger = LogManager.getLogger(Hook.class);
 
-//    @BeforeAll todo return it
-//    public static void beforeAllInitialize(){
-//        dataBaseService = new DataBaseService();
-//        projectsTable = new ProjectsTable(dataBaseService);
-//        logger.info("Data Base connection open");
-//        boardNames = new ArrayList<String>();
-//        boardKeys = new ArrayList<String>();
-//        try {
-//            rs = projectsTable.getProjects();
-//            while (rs.next()){
-//                boardNames.add(rs.getString(2));
-//                boardKeys.add(rs.getString(3));
-//            }
-//
-//
-//        }catch (SQLException e){
-//            e.printStackTrace();
-//        }
-//        logger.info("Data Base values import to Test Framework");
-//    }
+    @BeforeAll
+    public static void beforeAllInitialize() {
+        dataBaseService = new DataBaseService();
+        projectsTable = new ProjectsTable(dataBaseService);
+        logger.info("Data Base connection open");
+        boardNames = new ArrayList<String>();
+        boardKeys = new ArrayList<String>();
+        try {
+            rs = projectsTable.getProjects();
+            while (rs.next()) {
+                boardNames.add(rs.getString(2));
+                boardKeys.add(rs.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        logger.info("Data Base values import to Test Framework");
+    }
 
     @Before(value = "@UI")
     public void initializeTest(Scenario scenario) {
@@ -83,12 +80,10 @@ public class Hook extends BaseCucumberTest {
         }
     }
 
-//    @AfterAll todo return it
-//    public static void afterAll(){
-//        logger.info("All tests is passed");
-//        dataBaseService.closeConnection();
-//
-//    }
-
+    @AfterAll
+    public static void afterAll() {
+        logger.info("All tests is passed");
+        dataBaseService.closeConnection();
+    }
 }
 
