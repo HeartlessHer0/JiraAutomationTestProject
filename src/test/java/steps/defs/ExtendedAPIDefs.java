@@ -14,18 +14,18 @@ import java.util.Objects;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiExtendedDefs extends BaseCucumberTest {
+public class ExtendedAPIDefs extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
     private ValidatableResponse validatableResponse;
 
     Map<String, Object> jsonAsMap = new HashMap<>();
 
-    public ApiExtendedDefs(BaseCucumberTest baseCucumberTest) {
+    public ExtendedAPIDefs(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
     }
 
-    @Given("Body of my request has parameter {string} with the value {string} of {string}")
-    public void bodyOfMyRequestHasParameterWithTheValueOf(String key, String value, String typeOf) {
+    @Given("the body of my request has parameter {string} with the value {string} of {string}")
+    public void theBodyOfMyRequestHasParameterWithTheValueOf(String key, String value, String typeOf) {
         if (!Objects.equals(value, "<empty>")) {
             switch (typeOf) {
                 case "String": {
@@ -46,8 +46,8 @@ public class ApiExtendedDefs extends BaseCucumberTest {
         }
     }
 
-    @Given("Body of my request is {string}")
-    public void bodyOfMyRequestIs(String bodyOfMyRequest) {
+    @Given("the body of my request is {string}")
+    public void theBodyOfMyRequestIs(String bodyOfMyRequest) {
         switch (bodyOfMyRequest) {
             case "<empty>": {
                 break;
@@ -71,9 +71,8 @@ public class ApiExtendedDefs extends BaseCucumberTest {
      *
      */
 
-
-    @When("I want to get the project with PROJECT_ID or KEY {string}")
-    public void iWantToGetTheProjectWithPROJECT_IDOrKEY(String projectIdOrKey) {
+    @When("I send a request to get the project with PROJECT_ID or KEY {string}")
+    public void iSendARequestToGetTheProjectWithPROJECT_IDOrKEY(String projectIdOrKey) {
         validatableResponse = given()
                 .pathParam("projectIdOrKey", projectIdOrKey)
                 .when()
@@ -85,16 +84,16 @@ public class ApiExtendedDefs extends BaseCucumberTest {
      *
      */
 
-    @Then("I should get the status code {int}")
-    public void iShouldGetTheStatusCode(int statusCode) {
+    @Then("I get the status code {int}")
+    public void iGetTheStatusCode(int statusCode) {
         validatableResponse
                 .log().status().log().body()//todo del
                 .assertThat()
                 .statusCode(statusCode);
     }
 
-    @Then("I should get a response with the error message {string}")
-    public void iShouldGetAResponseWithTheErrorMessage(String errorMessage) {
+    @Then("I get a response with the error message {string}")
+    public void iGetAResponseWithTheErrorMessage(String errorMessage) {
         if (!Objects.equals(errorMessage, "<none>")) {
             Assert.assertEquals(
                     validatableResponse.extract().jsonPath().getString("errorMessages[0]"),
