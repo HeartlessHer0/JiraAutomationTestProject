@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class Hook extends BaseCucumberTest {
     private BaseCucumberTest baseCucumberTest;
+    private static final Logger logger = LogManager.getLogger(Hook.class);
 
     public Hook(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;

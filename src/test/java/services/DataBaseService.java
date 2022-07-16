@@ -39,7 +39,7 @@ public class DataBaseService {
             logger.info("Something went wrong!");
         }
     }
-
+    
     public void closeConnection() {
         try {
             connection.close();

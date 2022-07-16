@@ -1,5 +1,6 @@
 package pages;
 
+import baseEntities.BaseCucumberTest;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
