@@ -60,7 +60,7 @@ public class SmokeAPIDefs extends BaseCucumberTest {
         logger.info("Configuring username and token...");
 
         baseCucumberTest.restAssured.requestSpecification = given()
-                .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
+                .auth().preemptive().basic(LOGIN, TOKEN);
 
         logger.info("... username and token are successfully configured!");
     }

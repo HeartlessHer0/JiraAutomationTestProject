@@ -21,10 +21,10 @@ public class LoginUIDefs extends BaseCucumberTest {
 
     @When("User enter correct email and password")
     public void userEnterCorrectEmailAndPassword() {
-        loginPage.getEmailInput().sendKeys("jedai38@gmail.com");
+        loginPage.getEmailInput().sendKeys(LOGIN);
         loginPage.getSubmitButton().click();
         logger.info("Correct email is entered");
-        loginPage.getPswInput().sendKeys("MyPass4RegTrello2022");
+        loginPage.getPswInput().sendKeys(PASSWORD);
         loginPage.getSubmitButton().click();
         logger.info("Correct psw is entered");
 
@@ -38,7 +38,7 @@ public class LoginUIDefs extends BaseCucumberTest {
 
     @When("User enter correct email and incorrect password")
     public void userEnterCorrectEmailAndIncorrectPassword() {
-        loginPage.getEmailInput().sendKeys("jedai38@gmail.com");
+        loginPage.getEmailInput().sendKeys(LOGIN);
         loginPage.getSubmitButton().click();
         logger.info("Correct email is entered");
         loginPage.getPswInput().sendKeys("12345567");
@@ -54,7 +54,7 @@ public class LoginUIDefs extends BaseCucumberTest {
 
     @When("User enter correct email and password is null")
     public void userEnterCorrectEmailAndPasswordIsNull() {
-        loginPage.getEmailInput().sendKeys("jedai38@gmail.com");
+        loginPage.getEmailInput().sendKeys(LOGIN);
         loginPage.getSubmitButton().click();
         logger.info("Correct email is entered");
         loginPage.getPswInput().click();
