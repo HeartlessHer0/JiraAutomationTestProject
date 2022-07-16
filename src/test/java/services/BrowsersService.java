@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,14 +34,14 @@ public class BrowsersService {
                 driverManagerType = DriverManagerType.FIREFOX;
                 WebDriverManager.getInstance(driverManagerType).setup();
 
-                driver = new FirefoxDriver(getFirefoxOptions());
+                driver = new FirefoxDriver();
                 break;
 
             case "edge":
                 driverManagerType = DriverManagerType.EDGE;
                 WebDriverManager.getInstance(driverManagerType).setup();
 
-                driver = new EdgeDriver(getEdgeOptions());
+                driver = new EdgeDriver();
                 break;
 
             default:
@@ -66,32 +64,9 @@ public class BrowsersService {
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--silent");
-        //chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--incognito");
-        chromeOptions.addArguments("--window-size=1920,1200");
 
         return chromeOptions;
-    }
-
-    public FirefoxOptions getFirefoxOptions() {
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-//        firefoxOptions.addArguments("--disable-gpu");
-//        firefoxOptions.addArguments("--ignore-certificate-errors");
-//        firefoxOptions.addArguments("--silent");
-//        firefoxOptions.addArguments("--start-maximized");
-//        firefoxOptions.addArguments("--incognito");
-
-        return firefoxOptions;
-    }
-
-    public EdgeOptions getEdgeOptions() {
-        EdgeOptions edgeOptions = new EdgeOptions();
-//        edgeOptions.addArguments("--disable-gpu");
-//        edgeOptions.addArguments("--ignore-certificate-errors");
-//        edgeOptions.addArguments("--silent");
-//        edgeOptions.addArguments("--start-maximized");
-//        edgeOptions.addArguments("--incognito");
-
-        return edgeOptions;
     }
 }
