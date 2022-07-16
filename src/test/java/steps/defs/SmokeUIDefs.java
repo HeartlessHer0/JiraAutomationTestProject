@@ -47,4 +47,27 @@ public class SmokeUIDefs extends BaseCucumberTest {
         Assert.assertTrue(loginPage.getEmailInput().isDisplayed());
         logger.info("Login page is opened after Logout");
     }
-}
+
+    @Then("Trash board is deleted")
+    public void trashBoardIsDeleted() {
+        Assert.assertTrue(trashPage.getDeleteNotificationLocator().isDisplayed());
+        logger.info("Delete notification is displayed");
+    }
+
+    @When("User delete Smoke UI Board")
+    public void userDeleteSmokeUIBoard() {
+            startPage.getJiraSoftwareButton().click();
+            logger.info("Jira All Projects Page is opened");
+            jiraAllProjectsPage.getProjectActionsButton(boardNames.get(0)).click();
+            jiraAllProjectsPage.getMoveToTrashProjectButton().click();
+            jiraAllProjectsPage.getConfirmMoveToTrashProjectButton().click();
+            logger.info("Smoke UI Board is moved to Trash Page");
+            jiraAllProjectsPage.getGoToTrashPageButton().click();
+            logger.info("Trash Page is Opened");
+            trashPage.getBoardActionsButton(boardNames.get(5)).click();
+            trashPage.getDeleteFromTrashButton().click();
+            trashPage.getConfirmDeleteButton().click();
+            logger.info("Smoke Board is deleted");
+        }
+    }
+

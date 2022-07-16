@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Main suite"> <!-- todo change naming -->
+<suite name="Main suite" parallel="true" thread-count="2"> <!-- todo change naming -->
     <test name="API Smoke tests">
         <classes>
-            <class name="runner.CucumberRunnerTest"/>
+            <class name="runner.CucumberRunnerTestUI"/>
+            <class name="runner.CucumberRunnerTestAPI"/>
         </classes>
     </test>
 </suite>

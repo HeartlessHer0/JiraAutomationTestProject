@@ -1,6 +1,5 @@
 package pages;
 
-import baseEntities.BaseCucumberTest;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -98,7 +97,7 @@ public class BoardPage extends BasePage {
     }
 
     public WebElement getOpenIssueButtonLocator(String issueName) {
-        return waitsService.waitForPresenceOfElement(By.xpath(openIssueButtonLocator.replace("Replace", issueName)));
+        return waitsService.waitForVisibilityLocatedBy(By.xpath(openIssueButtonLocator.replace("Replace", issueName)));
     }
 
     public WebElement getIssueOptionsButtonLocator() {

@@ -557,4 +557,5 @@ public class SmokeAPIDefs extends BaseCucumberTest {
             Assert.fail(assertionError.getMessage());
         }
     }
+
 }

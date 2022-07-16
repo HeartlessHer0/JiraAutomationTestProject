@@ -25,8 +25,6 @@ public class Hook extends BaseCucumberTest {
         this.baseCucumberTest = baseCucumberTest;
     }
 
-    private static final Logger logger = LogManager.getLogger(Hook.class);
-
     @BeforeAll
     public static void beforeAllInitialize() {
         dataBaseService = new DataBaseService();
@@ -55,7 +53,6 @@ public class Hook extends BaseCucumberTest {
         baseCucumberTest.driver = new BrowsersService().getDriver();
 
         logger.info("WebDriver initialized");
-
         baseCucumberTest.jiraAllProjectsPage = new JiraAllProjectsPage(driver);
         baseCucumberTest.jiraSoftwareNavigationPage = new JiraSoftwareNavigationPage(driver);
         baseCucumberTest.jiraWorkPage = new JiraWorkPage(driver);
@@ -66,7 +63,6 @@ public class Hook extends BaseCucumberTest {
         baseCucumberTest.projectSettingPage = new ProjectSettingPage(driver);
         baseCucumberTest.trashPage = new TrashPage(driver);
         baseCucumberTest.profileSettingsPage = new ProfileSettingsPage(driver);
-
         logger.info("All pages initialized");
     }
 
@@ -95,7 +91,7 @@ public class Hook extends BaseCucumberTest {
     @AfterAll
     public static void afterAll() {
         logger.info("All tests passed");
-
         dataBaseService.closeConnection();
+        logger.info("DataBase connection closed");
     }
 }
