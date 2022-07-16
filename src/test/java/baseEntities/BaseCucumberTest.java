@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 
 public class BaseCucumberTest {
-    public static final String LOGIN = System.getProperty("LOGIN");
-    public static final String PASSWORD = System.getProperty("PASSWORD");
-    public static final String TOKEN = System.getProperty("TOKEN");
+    public static final String LOGIN = System.getProperty("userlogin");
+    public static final String PASSWORD = System.getProperty("userpsw");
+    public static final String TOKEN = System.getProperty("usertoken");
 
     public static WebDriver driver;
 
