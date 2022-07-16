@@ -151,8 +151,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.build.version}</version>
                 <configuration>
-                    <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.build.version}/aspectjweaver-${aspectj.build.version}.jar"
                         -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
