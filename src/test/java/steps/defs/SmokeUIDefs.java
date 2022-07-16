@@ -64,7 +64,7 @@ public class SmokeUIDefs extends BaseCucumberTest {
             logger.info("Smoke UI Board is moved to Trash Page");
             jiraAllProjectsPage.getGoToTrashPageButton().click();
             logger.info("Trash Page is Opened");
-            trashPage.getBoardActionsButton(boardNames.get(5)).click();
+            trashPage.getBoardActionsButton(boardNames.get(0)).click();
             trashPage.getDeleteFromTrashButton().click();
             trashPage.getConfirmDeleteButton().click();
             logger.info("Smoke Board is deleted");

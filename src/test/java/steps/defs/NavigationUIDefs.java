@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 public class NavigationUIDefs extends BaseCucumberTest {
@@ -55,7 +56,12 @@ public class NavigationUIDefs extends BaseCucumberTest {
     public void userGoToJiraAllProjectsPageAndClickJiraSoftwareMainButton() {
         startPage.getJiraSoftwareButton().click();
         logger.info("Jira Software button is clicked");
-        jiraSoftwareNavigationPage.getJiraSoftwareMainButton().click();
+        Actions actions = new Actions(driver);
+        actions
+                .moveToElement(jiraSoftwareNavigationPage.getJiraSoftwareMainButton())
+                .click(jiraSoftwareNavigationPage.getJiraSoftwareMainButton())
+                        .build()
+                                .perform();
         logger.info("Jira Software Main button is clicked");
     }
 
