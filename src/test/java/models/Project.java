@@ -1,8 +1,6 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -40,13 +38,7 @@ public class Project {
     /**
      * A link to information about this project, such as project documentation.
      */
-    private transient String url;
-
-    /**
-     * The default assignee when creating issues for this project.
-     * Valid values: PROJECT_LEAD, UNASSIGNED
-     */
-    //todo remove it? private transient String assigneeType;
+    private String url;//todo transistent?
 
     /**
      * <h3>REQUIRED</h3>

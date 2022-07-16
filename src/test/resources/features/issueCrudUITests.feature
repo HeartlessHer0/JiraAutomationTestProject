@@ -6,6 +6,7 @@ Feature: Issue CRUD
     And User enter correct email and password
     And User open the Test Board
 
+
   Scenario: User create issue in Test Board
     When User create issue with some parameters
     Then User see created Issue on the Test Board Page

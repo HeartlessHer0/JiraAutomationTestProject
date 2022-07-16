@@ -4,6 +4,7 @@ Feature: Login
   Background:
     Given Atlassian login page is open
 
+
   Scenario: Login Test with correct Email and Password
     When User enter correct email and password
     Then User come to the Atlassian Start Page

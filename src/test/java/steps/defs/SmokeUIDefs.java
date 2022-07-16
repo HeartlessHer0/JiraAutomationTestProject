@@ -12,7 +12,7 @@ public class SmokeUIDefs extends BaseCucumberTest {
     private static final Logger logger = LogManager.getLogger(SmokeUIDefs.class);
 
     @When("User go to the Jira Software page and create a new board  with some parameters")
-    public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters()  {
+    public void userGoToTheJiraSoftwarePageAndCreateANewBoardWithSomeParameters() {
         startPage.getJiraSoftwareButton().click();
         logger.info("Jira All Projects page is opened");
         jiraAllProjectsPage.getAddBoardButton().click();

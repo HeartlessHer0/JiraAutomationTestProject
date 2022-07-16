@@ -17,11 +17,8 @@ public class ProjectSettingPage extends BasePage {
     private By changesNotificationLocator = By.xpath("//*[@role='alert']");
     private By backToProjectButton = By.xpath("//*[contains(text(), 'Вернуться к проекту')]");
 
-
-
-
     public ProjectSettingPage(WebDriver driver) {
-        super(driver) ;
+        super(driver);
     }
 
     @Override

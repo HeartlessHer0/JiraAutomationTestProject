@@ -6,8 +6,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/resources/features/",
-        glue = {"steps.defs", "baseEntities",
-        }
+        glue = {"steps.defs", "baseEntities"}
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 

@@ -17,13 +17,12 @@ Feature: Attachments to Issue
     And User delete Test Image from Issue
     Then User see Issue without Test Image
 
-    Scenario: User add comment to Issue
-      When User open test Issue
-      And User add comment
-      Then User see added comment in Issue
+  Scenario: User add comment to Issue
+    When User open test Issue
+    And User add comment
+    Then User see added comment in Issue
 
   Scenario: User delete added comment from Issue
     When User open test Issue
     And User delete Test Comment
     Then User see Issue without Test Comment
-

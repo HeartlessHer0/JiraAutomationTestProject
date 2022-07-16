@@ -9,14 +9,11 @@ public class StartPage extends BasePage {
 
     private String startPageURL = "https://start.atlassian.com";
 
-    //Блок описания селекторов для элементов
     private By profileButtonLocator = By.xpath("//*[@data-testid='nav__profile-menu-trigger']/span/span/div");
     private By jiraSoftwareButtonLocator = By.xpath("//*[contains (text(), 'Jira Software')]");
     private By accountSettingsButton = By.xpath("//*[contains(text(), 'Настройки аккаунта')]");
     private By quitButton = By.xpath("//*[contains(text(), 'Выйти')]");
 
-
-    //Блок инициализации
     public StartPage(WebDriver driver) {
         super(driver);
     }
@@ -26,11 +23,9 @@ public class StartPage extends BasePage {
         return jiraSoftwareButtonLocator;
     }
 
-    //Блок атомарных методов
     public String getStartPageURL() {
         return startPageURL;
     }
-
 
     public WebElement getJiraSoftwareButton() {
         return waitsService.waitForVisibilityLocatedBy(jiraSoftwareButtonLocator);

@@ -34,7 +34,7 @@ public class JiraWorkPage extends BasePage {
         return waitsService.waitForVisibilityLocatedBy(allProjectsButtonLocator);
     }
 
-    public WebElement  getMainProjectButton(String projectName)  {
+    public WebElement getMainProjectButton(String projectName) {
         return waitsService.waitForVisibilityLocatedBy(By.xpath(mainProjectButtonLocator.replace("Replace", projectName)));
     }
 

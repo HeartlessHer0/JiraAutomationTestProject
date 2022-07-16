@@ -1,16 +1,14 @@
 package pages;
 
-
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 public class LoginPage extends BasePage {
 
     private String loginPageURL = "https://id.atlassian.com/login";
-    //Блок описания селекторов для элементов
+
     private By emailInputLocator = By.id("username");
     private By pswInputLocator = By.id("password");
     private By logInSubmitButtonLocator = By.id("login-submit");
@@ -19,7 +17,6 @@ public class LoginPage extends BasePage {
     private By signupSubmitButtonLocator = By.id("signup-submit");
     private By emailIsNullLocator = By.xpath("//div//*[contains(text(), 'Введите адрес электронной почты')]");
 
-    //Блок инициализации
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -28,9 +25,6 @@ public class LoginPage extends BasePage {
     protected By getPageIdentifier() {
         return emailInputLocator;
     }
-
-    //Блок атомарных методов
-
 
     public String getLoginPageURL() {
         return loginPageURL;
@@ -56,7 +50,7 @@ public class LoginPage extends BasePage {
         return waitsService.waitForVisibilityLocatedBy(incorrectEmailOrPasswordTextLocator);
     }
 
-    public WebElement getSignupSubmitButton(){
+    public WebElement getSignupSubmitButton() {
         return waitsService.waitForVisibilityLocatedBy(signupSubmitButtonLocator);
     }
 
