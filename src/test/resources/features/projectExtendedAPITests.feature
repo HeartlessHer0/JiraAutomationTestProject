@@ -7,6 +7,7 @@ Feature: Project extended API tests
     Given RestAssured is configured to the basic correct configuration
     * username and token are correct
 
+
   Scenario Outline: Getting a project (negative scenarios)
     When I send a request to get the project with PROJECT_ID or KEY "<projectIdOrKey>"
     Then I get the status code <statusCode>

@@ -14,7 +14,7 @@ public class DataBaseService {
     static final String PSW = "m1TfS5PwJ6zFAz-O6CCAHkWbJj8y53P8";
     static final String DATABASE_NAME = "vxzwtbyw";
 
-    static final String JDBC = "jdbc:postgresql://"+HOST+":"+PORT+"/"+DATABASE_NAME;
+    static final String JDBC = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME;
 
     Connection connection = null;
     Statement statement = null;
@@ -36,9 +36,10 @@ public class DataBaseService {
         if (connection != null) {
             logger.info("You successfully connected to database.");
         } else {
-            logger.info("Что-то пошло не так");
+            logger.info("Something went wrong!");
         }
     }
+
     public void closeConnection() {
         try {
             connection.close();
@@ -46,29 +47,31 @@ public class DataBaseService {
             logger.info(throwables.toString());
         }
     }
+
     public Connection getConnection() {
         return this.connection;
     }
+
     public Statement getStatement() {
         try {
             if (statement == null) {
                 statement = getConnection().createStatement();
             }
         } catch (SQLException ex) {
-            logger.info("Не удалось создать Statement...");
+            logger.info("Can`t create a statement!");
         }
 
         return statement;
     }
-    public void executeSql(String sql){
+
+    public void executeSql(String sql) {
         try {
-            logger.info("Результат выполнения запроса "+ getStatement().execute(sql));
+            logger.info("Query execution result: " + getStatement().execute(sql));
         } catch (SQLException e) {
             logger.info(e.getMessage());
         }
-
-
     }
+
     public ResultSet executeQuery(String sql) {
         try {
             return getStatement().executeQuery(sql);
@@ -78,5 +81,4 @@ public class DataBaseService {
 
         return null;
     }
-
 }

@@ -7,6 +7,7 @@ Feature: Project CRUD API tests
     Given RestAssured is configured to the basic correct configuration
     * username and token are correct
 
+
   Scenario: Creating a project
     When I send a request to create a project according my testing standards
     Then I get a correct response about the created project

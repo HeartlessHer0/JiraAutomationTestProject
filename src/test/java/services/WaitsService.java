@@ -38,11 +38,11 @@ public class WaitsService {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public WebElement waitForClickableElement(By locator){
+    public WebElement waitForClickableElement(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public Boolean waitForInvisibilityElement(By locator){
+
+    public Boolean waitForInvisibilityElement(By locator) {
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
-
 }

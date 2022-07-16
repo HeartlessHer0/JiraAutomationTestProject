@@ -7,6 +7,7 @@ Feature: Issue CRUD API tests
     Given RestAssured is configured to the basic correct configuration
     * username and token are correct
 
+
   Scenario: Creating an issue
     Given a test project for the following tests has been created
     When I send a request to create an issue according my testing standards

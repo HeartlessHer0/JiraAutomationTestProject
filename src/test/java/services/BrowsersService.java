@@ -12,7 +12,6 @@ import java.util.Locale;
 
 public class BrowsersService {
 
-    //todo обновить-удалить данные
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
 
@@ -26,7 +25,7 @@ public class BrowsersService {
                 break;
 
             default:
-                System.out.println("Browser " + ReadProperties.browserName() + " is not support!!!");
+                System.out.println("Browser " + ReadProperties.browserName() + " is not support!");
         }
     }
 

@@ -10,7 +10,6 @@ public class LogoutPage extends BasePage {
     private String logoutPAgeURL = "https://id.atlassian.com/logout";
     private By logoutButtonLocator = By.id("logout-submit");
 
-
     public LogoutPage(WebDriver driver) {
         super(driver);
     }

@@ -5,6 +5,7 @@ Feature: Board CRUD
     Given Atlassian login page is open
     And User enter correct email and password
 
+
   Scenario: User create a new Board
     When User go to the Jira Software page and create a new board for CRUD test
     Then User see the created Board on Board page

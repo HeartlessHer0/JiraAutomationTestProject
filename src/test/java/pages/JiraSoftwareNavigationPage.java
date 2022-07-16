@@ -16,8 +16,17 @@ public class JiraSoftwareNavigationPage extends BasePage {
     private By profileButtonLocator = By.xpath("//*[@data-test-id='ak-spotlight-target-profile-spotlight']");
     private By logoutButtonLocator = By.xpath("//*[@href='/logout']//*[contains(text(), 'Выйти')]");
 
+    public JiraSoftwareNavigationPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @Override
+    protected By getPageIdentifier() {
+        return jiraSoftwareMainButtonLocator;
+    }
+
     public WebElement getAppSwitcherButton() {
-        return  waitsService.waitForVisibilityLocatedBy(appSwitcherButtonLocator);
+        return waitsService.waitForVisibilityLocatedBy(appSwitcherButtonLocator);
     }
 
     public WebElement getJiraSoftwareMainButton() {
@@ -25,11 +34,11 @@ public class JiraSoftwareNavigationPage extends BasePage {
     }
 
     public WebElement getYourWorkButton() {
-        return  waitsService.waitForVisibilityLocatedBy(yourWorkButtonLocator);
+        return waitsService.waitForVisibilityLocatedBy(yourWorkButtonLocator);
     }
 
     public WebElement getProjectsButton() {
-        return  waitsService.waitForVisibilityLocatedBy(projectsButtonLocator);
+        return waitsService.waitForVisibilityLocatedBy(projectsButtonLocator);
     }
 
     public WebElement getCreateButton() {
@@ -46,14 +55,5 @@ public class JiraSoftwareNavigationPage extends BasePage {
 
     public WebElement getLogoutButtonLocator() {
         return waitsService.waitForVisibilityLocatedBy(logoutButtonLocator);
-    }
-
-    public JiraSoftwareNavigationPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return jiraSoftwareMainButtonLocator;
     }
 }

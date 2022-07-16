@@ -14,6 +14,7 @@ public class ProfileSettingsPage extends BasePage {
     public ProfileSettingsPage(WebDriver driver) {
         super(driver);
     }
+
     @Override
     protected By getPageIdentifier() {
         return profileSettingPageIdentifierLocator;

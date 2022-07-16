@@ -15,7 +15,7 @@ public class BaseCucumberTest {
     public static WebDriver driver;
 
     public static LoginPage loginPage;
-    public static StartPage startPage ;
+    public static StartPage startPage;
     public static JiraAllProjectsPage jiraAllProjectsPage;
     public static JiraSoftwareNavigationPage jiraSoftwareNavigationPage;
     public static JiraWorkPage jiraWorkPage;
@@ -36,6 +36,4 @@ public class BaseCucumberTest {
 
     public static ArrayList<String> boardNames;
     public static ArrayList<String> boardKeys;
-
-
 }
