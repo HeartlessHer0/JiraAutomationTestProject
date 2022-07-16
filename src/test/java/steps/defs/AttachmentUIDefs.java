@@ -16,9 +16,12 @@ import services.WaitsService;
 import java.time.Duration;
 
 public class AttachmentUIDefs extends BaseCucumberTest {
-    private WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
-    private String testComment = "Test Comment";
+
     private static final Logger logger = LogManager.getLogger(AttachmentUIDefs.class);
+
+    private WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
+
+    private String testComment = "Test Comment";
 
     @When("User add Test Image to Issue")
     public void userAddTestImageToIssue() throws InterruptedException {
@@ -26,8 +29,9 @@ public class AttachmentUIDefs extends BaseCucumberTest {
 
         boardPage.getOpenIssueButtonLocator("ImageAndCommentTest").click();
         boardPage.getFileUploadingLocator().sendKeys(path);
-        logger.info("Test image added to Test Issue");
         Thread.sleep(3000);
+
+        logger.info("Test image added to Test Issue");
     }
 
     @And("User create issue")
@@ -35,20 +39,25 @@ public class AttachmentUIDefs extends BaseCucumberTest {
         boardPage.getCreateIssueButton("К выполнению").click();
         boardPage.getIssueNameFieldLocator().sendKeys("ImageAndCommentTest");
         boardPage.getIssueNameFieldLocator().sendKeys(Keys.ENTER);
+
         logger.info("Test issue created");
+
         boardPage.getCurrentBoardButton().click();
+
         logger.info("Page reloaded");
     }
 
     @Then("User see added Image in Issue")
     public void userSeeAddedImageInIssue() {
         Assert.assertTrue(boardPage.getImageLocator().isDisplayed());
+
         logger.info("Test image is on the page");
     }
 
     @When("User open test Issue")
     public void userOpenTestIssue() {
         boardPage.getOpenIssueButtonLocator("ImageAndCommentTest").click();
+
         logger.info("Test Issue is open");
     }
 
@@ -57,12 +66,14 @@ public class AttachmentUIDefs extends BaseCucumberTest {
         boardPage.getImageActionsLocator().click();
         boardPage.getImageDeleteButton().click();
         boardPage.getConfirmDeleteImageButton().click();
+
         logger.info("Test Image deleted from the Test Issue");
     }
 
     @Then("User see Issue without Test Image")
     public void userSeeIssueWithoutTestImage() {
         Assert.assertTrue(waitsService.waitForInvisibilityElement(boardPage.getImageInvisLocator()));
+
         logger.info("Test Image is not on the Issue");
     }
 
@@ -71,12 +82,14 @@ public class AttachmentUIDefs extends BaseCucumberTest {
         boardPage.getIssueCommentFieldLocator().click();
         boardPage.getActivatedCommentFieldLocator().sendKeys(testComment);
         boardPage.getCommentOrDescriptionSaveButtonLocator().click();
+
         logger.info("Comment added to the Issue");
     }
 
     @Then("User see added comment in Issue")
     public void userSeeAddedCommentInIssue() {
         Assert.assertTrue(boardPage.getCommentLocator(testComment).isDisplayed());
+
         logger.info("Comment is on the page");
     }
 
@@ -84,12 +97,14 @@ public class AttachmentUIDefs extends BaseCucumberTest {
     public void userDeleteTestComment() {
         boardPage.getImageDeleteButton().click();
         boardPage.getConfirmDeleteImageButton().click();
-        logger.info("Comment deleted from Issue");
+
+        logger.info("Comment deleted from the Issue");
     }
 
     @Then("User see Issue without Test Comment")
     public void userSeeIssueWithoutTestComment() {
         Assert.assertTrue(waitsService.waitForInvisibilityElement(By.xpath(boardPage.getCommentInvLocator(testComment))));
+
         logger.info("Comment is not on the Issue");
     }
 }

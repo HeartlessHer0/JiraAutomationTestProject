@@ -10,8 +10,8 @@ public class DataBaseService {
 
     static final String HOST = "abul.db.elephantsql.com";
     static final String PORT = "5432";
-    static final String USER = "vxzwtbyw";
-    static final String PSW = "m1TfS5PwJ6zFAz-O6CCAHkWbJj8y53P8";
+    static final String USER = System.getProperty("DB_USER");
+    static final String PSW = System.getProperty("DB_PASSWORD");
     static final String DATABASE_NAME = "vxzwtbyw";
 
     static final String JDBC = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME;
