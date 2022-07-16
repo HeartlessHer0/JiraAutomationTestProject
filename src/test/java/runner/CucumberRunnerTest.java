@@ -5,10 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = "src/test/resources/features/API/",
+        features = "src/test/resources/features/",
         glue = {"steps.defs", "baseEntities"}
 )
-public class CucumberRunnerTestAPI extends AbstractTestNGCucumberTests {
+public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 
     @Override
     @DataProvider
