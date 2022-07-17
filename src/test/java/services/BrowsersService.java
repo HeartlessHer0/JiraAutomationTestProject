@@ -52,8 +52,8 @@ public class BrowsersService {
     }
 
     public WebDriver getDriver() {
-      //  driver.manage().window().maximize();
-      //  driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
