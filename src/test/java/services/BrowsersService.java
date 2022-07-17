@@ -74,22 +74,22 @@ public class BrowsersService {
 
     public FirefoxOptions getFirefoxOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.addArguments("--disable-gpu");
-        firefoxOptions.addArguments("--ignore-certificate-errors");
-        firefoxOptions.addArguments("--silent");
-        firefoxOptions.addArguments("--start-maximized");
-        firefoxOptions.addArguments("--incognito");
+//        firefoxOptions.addArguments("--disable-gpu");
+//        firefoxOptions.addArguments("--ignore-certificate-errors");
+//        firefoxOptions.addArguments("--silent");
+//        firefoxOptions.addArguments("--start-maximized");
+//        firefoxOptions.addArguments("--incognito");
 
         return firefoxOptions;
     }
 
     public EdgeOptions getEdgeOptions() {
         EdgeOptions edgeOptions = new EdgeOptions();
-        edgeOptions.addArguments("--disable-gpu");
-        edgeOptions.addArguments("--ignore-certificate-errors");
-        edgeOptions.addArguments("--silent");
-        edgeOptions.addArguments("--start-maximized");
-        edgeOptions.addArguments("--incognito");
+//        edgeOptions.addArguments("--disable-gpu");
+//        edgeOptions.addArguments("--ignore-certificate-errors");
+//        edgeOptions.addArguments("--silent");
+//        edgeOptions.addArguments("--start-maximized");
+//        edgeOptions.addArguments("--incognito");
 
         return edgeOptions;
     }

@@ -30,7 +30,7 @@ public class JiraSoftwareNavigationPage extends BasePage {
     }
 
     public WebElement getJiraSoftwareMainButton() {
-        return waitsService.waitForVisibilityLocatedBy(jiraSoftwareMainButtonLocator);
+        return waitsService.waitForClickableElement(jiraSoftwareMainButtonLocator);
     }
 
     public WebElement getYourWorkButton() {
