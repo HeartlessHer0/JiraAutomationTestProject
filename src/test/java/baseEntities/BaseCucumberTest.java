@@ -10,7 +10,6 @@ import tables.ProjectsTable;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BaseCucumberTest {
     public static WebDriver driver;

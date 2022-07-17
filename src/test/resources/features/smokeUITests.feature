@@ -13,3 +13,7 @@ Feature: UI Smoke Test
   Scenario: User logout
     When User logout from account
     Then User see login page
+
+  Scenario: User delete trash Board
+    When User delete Smoke UI Board
+    Then Trash board is deleted

@@ -18,8 +18,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Hook extends BaseCucumberTest {
+
     private BaseCucumberTest baseCucumberTest;
-    private static final Logger logger = LogManager.getLogger(Hook.class);
 
     public Hook(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
@@ -94,8 +94,9 @@ public class Hook extends BaseCucumberTest {
 
     @AfterAll
     public static void afterAll() {
-        logger.info("All tests passed");
-
         dataBaseService.closeConnection();
+
+        logger.info("DataBase connection closed");
+        logger.info("All tests passed");
     }
 }

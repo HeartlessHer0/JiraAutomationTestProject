@@ -4,7 +4,6 @@ import baseEntities.BaseCucumberTest;
 
 import configuration.Endpoints;
 import configuration.ReadProperties;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,11 +22,16 @@ import org.testng.Assert;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import static baseEntities.AuthEntities.LOGIN;
+import static baseEntities.AuthEntities.TOKEN;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.startsWith;
 
 public class SmokeAPIDefs extends BaseCucumberTest {
+
+    private Project actualProject;
+    private Project[] arrayOfActualProjects;
     private BaseCucumberTest baseCucumberTest;
     private ValidatableResponse validatableResponse;
 
@@ -37,11 +41,7 @@ public class SmokeAPIDefs extends BaseCucumberTest {
 
     private static final Logger logger = LogManager.getLogger(SmokeAPIDefs.class);
 
-    private Project actualProject;
-    private Project[] arrayOfActualProjects;
-
     private static final String LEAD_ACCOUNT_ID = "70121:77540319-5931-4c40-a571-3bebf0eff56e";
-
 
     @Given("RestAssured is configured to the basic correct configuration")
     public void restassuredIsConfiguredToTheBasicCorrectConfiguration() {
@@ -60,7 +60,7 @@ public class SmokeAPIDefs extends BaseCucumberTest {
         logger.info("Configuring username and token...");
 
         baseCucumberTest.restAssured.requestSpecification = given()
-                .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
+                .auth().preemptive().basic(LOGIN, TOKEN);
 
         logger.info("... username and token are successfully configured!");
     }

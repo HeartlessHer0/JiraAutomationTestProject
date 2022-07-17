@@ -14,15 +14,15 @@ import java.util.Objects;
 import static io.restassured.RestAssured.given;
 
 public class ExtendedAPIDefs extends BaseCucumberTest {
+
     private BaseCucumberTest baseCucumberTest;
+    private ValidatableResponse validatableResponse;
 
     public ExtendedAPIDefs(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
     }
 
     private static final Logger logger = LogManager.getLogger(ExtendedAPIDefs.class);
-
-    private ValidatableResponse validatableResponse;
 
     @When("I send a request to get the project with PROJECT_ID or KEY {string}")
     public void iSendARequestToGetTheProjectWithPROJECT_IDOrKEY(String projectIdOrKey) {
@@ -36,7 +36,6 @@ public class ExtendedAPIDefs extends BaseCucumberTest {
 
         logger.info("... the request sent!");
     }
-
 
     @Then("I get the status code {int}")
     public void iGetTheStatusCode(int statusCode) {

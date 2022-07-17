@@ -14,12 +14,12 @@ Feature: Project extended API tests
     * I get a response with the error message "<errorMessage>"
 
     Examples:
-      | projectIdOrKey      | statusCode | errorMessage                                              |
-      | -1                  | 404        | No project could be found with key '-1'.                  |
-      | 0                   | 404        | No project could be found with key '0'.                   |
-      | 1                   | 404        | No project could be found with id '1'.                    |
-      | 2                   | 404        | No project could be found with id '2'.                    |
-      | 500000000000000000  | 404        | No project could be found with id '500000000000000000'.   |
-      | 999999999999999999  | 404        | No project could be found with id '999999999999999999'.   |
-      | 1000000000000000000 | 404        | No project could be found with key '1000000000000000000'. |
-      | 1000000000000000001 | 404        | No project could be found with key '1000000000000000001'. |
+      | projectIdOrKey      | statusCode | errorMessage                                               |
+      | -1                  | 404        | Проект с ключом '-1' не может быть найден                  |
+      | 0                   | 404        | Проект с ключом '0' не может быть найден                   |
+      | 1                   | 404        | Проект с id '1' не может быть найден                       |
+      | 2                   | 404        | Проект с id '2' не может быть найден                       |
+      | 500000000000000000  | 404        | Проект с id '500000000000000000' не может быть найден      |
+      | 999999999999999999  | 404        | Проект с id '999999999999999999' не может быть найден      |
+      | 1000000000000000000 | 404        | Проект с ключом '1000000000000000000' не может быть найден |
+      | 1000000000000000001 | 404        | Проект с ключом '1000000000000000001' не может быть найден |

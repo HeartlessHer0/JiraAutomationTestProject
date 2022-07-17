@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(exclude = {"leadAccountId", "description"})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
+
     /**
      * <h3>REQUIRED</h3>
      * Project keys must be unique and start with an uppercase letter
@@ -38,7 +39,7 @@ public class Project {
     /**
      * A link to information about this project, such as project documentation.
      */
-    private String url;//todo transistent?
+    private String url;
 
     /**
      * <h3>REQUIRED</h3>

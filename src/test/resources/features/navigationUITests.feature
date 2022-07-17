@@ -15,7 +15,7 @@ Feature: Navigation
     Then User see Jira Work Page
 
   Scenario: User open Board Page from Jira All Projects Page
-    When User go to Jira All Projects Page and  click some Board Button
+    When User go to Jira All Projects Page and click some Board Button
     Then User see Board Page
 
   Scenario: User open Logout Page from Start Page
@@ -25,4 +25,3 @@ Feature: Navigation
   Scenario: User open Project Setting Page from Jira All Projects Page
     When User click Project Settings Button
     Then User see Project Settings Page
-      

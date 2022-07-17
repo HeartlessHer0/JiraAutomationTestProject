@@ -26,3 +26,7 @@ Feature: Attachments to Issue
     When User open test Issue
     And User delete Test Comment
     Then User see Issue without Test Comment
+
+  Scenario: User delete Attachment Issue
+    When User delete trash issue
+    Then Test board is clean
