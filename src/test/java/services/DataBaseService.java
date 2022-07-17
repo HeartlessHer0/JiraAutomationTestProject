@@ -5,14 +5,18 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
+import static baseEntities.AuthEntities.DB_PASSWORD;
+import static baseEntities.AuthEntities.DB_USER;
+
 public class DataBaseService {
+
     Logger logger = LoggerFactory.getLogger(DataBaseService.class);
 
     static final String HOST = "abul.db.elephantsql.com";
     static final String PORT = "5432";
-    static final String USER = System.getProperty("DB_USER");
-    static final String PSW = System.getProperty("DB_PASSWORD");
     static final String DATABASE_NAME = "vxzwtbyw";
+    static String USER = DB_USER;
+    static String PSW = DB_PASSWORD;
 
     static final String JDBC = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME;
 
@@ -39,7 +43,7 @@ public class DataBaseService {
             logger.info("Something went wrong!");
         }
     }
-    
+
     public void closeConnection() {
         try {
             connection.close();

@@ -21,7 +21,8 @@ public class JiraAllProjectsPage extends BasePage {
     private By successMoveToTrashNotificationLocator = By.xpath("//*[@data-test-id='project-soft-delete-modal.ui.flags.moved-to-trash-success']");
     private By closeNotificationButton = By.xpath("//*[@data-testid='project-soft-delete-modal.ui.flags.moved-to-trash-success-dismiss']");
     private By goToTrashPageButton = By.xpath("//*[@href='/jira/settings/projects/trash']");
-    //Locators for create Board
+
+    //Locators for creating a Board
     private By addBoardButton = By.xpath("//*[@data-test-id='global-pages.directories.projects-directory-v2.create-projects-button.button.button']");
     private String boardTypeBoardButton = "//button[@aria-label='Replace']"; // Replace = {'Kanban' , 'Scrum', 'Отслеживание багов'}
     private By usePatternButton = By.xpath("//*[contains(text(),'Использовать шаблон')]");
@@ -91,7 +92,7 @@ public class JiraAllProjectsPage extends BasePage {
         return waitsService.waitForVisibilityLocatedBy(goToTrashPageButton);
     }
 
-    //Getters for creating Board
+    //Getters for creating a Board
     public WebElement getAddBoardButton() {
         return waitsService.waitForVisibilityLocatedBy(addBoardButton);
     }

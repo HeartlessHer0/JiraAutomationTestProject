@@ -14,7 +14,7 @@ Feature: Login
     Then User see error text area
 
   Scenario: Login Test with correct Email and without Password
-    When User enter correct email and password is null
+    When User enter correct email and password is empty
     Then User see password error message
 
   Scenario: Login Test with unregistered email

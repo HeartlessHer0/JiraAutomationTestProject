@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Hook extends BaseCucumberTest {
+
     private BaseCucumberTest baseCucumberTest;
 
     public Hook(BaseCucumberTest baseCucumberTest) {
@@ -93,8 +94,9 @@ public class Hook extends BaseCucumberTest {
 
     @AfterAll
     public static void afterAll() {
-        logger.info("All tests passed");
-
         dataBaseService.closeConnection();
+
+        logger.info("DataBase connection closed");
+        logger.info("All tests passed");
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ReadProperties {
+
     private static final Properties properties;
 
     static {
@@ -21,9 +22,5 @@ public class ReadProperties {
 
     public static int timeout() {
         return Integer.parseInt(properties.getProperty("timeout"));
-    }
-
-    public static String browserName() {
-        return properties.getProperty("browser");
     }
 }

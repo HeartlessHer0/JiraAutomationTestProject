@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class WaitsService {
+
     private WebDriverWait wait;
     private WebDriver driver;
 

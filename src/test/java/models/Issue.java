@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Issue {
+
     private Fields fields;
 
     public Issue(Fields fields, String issueKey) {
@@ -36,6 +37,7 @@ public class Issue {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class ProjectKey {
+
         /**
          * <h3>REQUIRED</h3>
          * The key of related project.
@@ -47,6 +49,7 @@ public class Issue {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class IssueType {
+
         /**
          * <h3>REQUIRED</h3>
          * The issue type.
@@ -54,7 +57,6 @@ public class Issue {
          */
         private String name;
     }
-
 
     /**
      * The ID of the created issue.
@@ -73,7 +75,6 @@ public class Issue {
      */
     @SerializedName("self")
     private transient String issueSelf;
-
 
     public static class Builder {
         private Issue newIssue;

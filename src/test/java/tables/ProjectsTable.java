@@ -7,6 +7,7 @@ import services.DataBaseService;
 import java.sql.ResultSet;
 
 public class ProjectsTable {
+
     DataBaseService dataBaseService;
 
     public ProjectsTable(DataBaseService dataBaseService) {

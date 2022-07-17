@@ -21,7 +21,6 @@ public class BoardPage extends BasePage {
     private By closeOrOpenNavigationPanelButton = By.xpath("//*[@data-testid='ContextualNavigation-resize-button']");
     private By createColumnButtonLocator = By.xpath("//*[@aria-label='Создать столбец']");
     private String columnHeaderLocator = "//*[@data-test-id='platform-board-kit.common.ui.column-header.editable-title.column-title.column-title' and @aria-label='Replace']";
-    //private By createColumnNameFieldLocator не могу поймать локатор, разберемся при встрече
     private By issueNameFieldLocator = By.xpath("//*[@placeholder='Что нужно сделать?']");
     private String openIssueButtonLocator = "//*[@data-test-id='platform-card.ui.card.focus-container']//span[contains(text(),'Replace')]"; //Replace = issueName
     private By issueOpenNameFieldLocator = By.xpath("//*[@data-test-id='issue.views.issue-base.foundation.summary.heading']");

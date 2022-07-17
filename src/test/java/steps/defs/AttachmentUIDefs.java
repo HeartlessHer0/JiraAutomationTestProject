@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import services.WaitsService;
@@ -56,7 +57,12 @@ public class AttachmentUIDefs extends BaseCucumberTest {
 
     @When("User open test Issue")
     public void userOpenTestIssue() {
-        boardPage.getOpenIssueButtonLocator("ImageAndCommentTest").click();
+        Actions actions = new Actions(driver);
+        actions
+                .moveToElement(boardPage.getOpenIssueButtonLocator("ImageAndCommentTest"))
+                .click(boardPage.getOpenIssueButtonLocator("ImageAndCommentTest"))
+                .build()
+                .perform();
 
         logger.info("Test Issue is open");
     }
@@ -106,5 +112,27 @@ public class AttachmentUIDefs extends BaseCucumberTest {
         Assert.assertTrue(waitsService.waitForInvisibilityElement(By.xpath(boardPage.getCommentInvLocator(testComment))));
 
         logger.info("Comment is not on the Issue");
+    }
+
+    @When("User delete trash issue")
+    public void userDeleteTrashIssue() {
+        Actions actions = new Actions(driver);
+        actions
+                .moveToElement(boardPage.getOpenIssueButtonLocator("ImageAndCommentTest"))
+                .build()
+                .perform();
+
+        boardPage.getIssueActionsButton("ImageAndCommentTest").click();
+        boardPage.getActionDeleteIssueButton().click();
+        boardPage.getConfirmDeleteIssueButton().click();
+
+        logger.info("Trash Issue is deleted");
+    }
+
+    @Then("Test board is clean")
+    public void testBoardIsClean() {
+        Assert.assertTrue(waitsService.waitForInvisibilityElement(By.xpath(boardPage.getOpenIssueButtonInvLocator("ImageAndCommentTest"))));
+
+        logger.info("Trash Issue is not displayed");
     }
 }
